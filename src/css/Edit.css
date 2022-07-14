@@ -1,0 +1,123 @@
+.list-of-foods{
+    padding: 1vw;
+
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-gap: 1vw;
+    align-items: start;
+}
+
+.list-of-foods > .food{
+    transition: all .3s ease-in-out;
+}
+
+.list-of-foods > .food:hover{
+    transform: scale(1.01);
+}
+
+.list-of-foods > .food{
+    background-color: white;
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+.food-id{
+    border-radius: 10px;
+    background-color: white;
+    padding: 5px 20px 20px;
+}
+
+.food-id > .food-title{
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.food-id > .food-description{
+    font-size: .8rem;
+    color: #666666;
+}
+
+.food-id > .food-end{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.food-id > .food-price{
+    margin-top: 1vw;
+    font-size: 1rem;
+    color: #666666;
+}
+
+.food-id > .food-select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.food-id > .food-end > .food-select > a{
+    text-decoration: none;
+
+    display: inline-flex;
+    text-transform: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    outline: 2px solid transparent;
+
+    border-radius: .375em;
+
+    min-width: 2.5rem;
+    height: 2.5rem;
+
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    background-color: #4C9240;
+    color: #fff;
+
+    user-select: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+    
+    /* outline-offset: 2px; */
+    /* width: 100%; */
+    line-height: 1.2;
+
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.food-id > .food-href > a:hover{
+    transform: scale(1.01);
+}
+
+.add-new-menu-button{
+    width: 5vw;
+    height: 5vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #4C9240;
+    border-radius: 100px;
+
+    position: fixed;
+    bottom: 1vw;
+    right: 1vw;
+    
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.add-new-menu-button:hover{
+    transform: scale(1.01);
+}

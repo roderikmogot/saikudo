@@ -1,0 +1,53 @@
+.home-container{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10vh;
+}
+
+.home-intro{
+    background-color: white;
+    height: 40vh;
+    width: 40vw;
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-logo{
+    margin-top: -5vh;
+    max-width: 20vw;
+    /* background-color: aqua; */
+}
+
+.home-greetings{
+    margin-top: -8vh;
+}
+
+.home-continue{
+    padding: .25em;
+    width: 40vw;
+    background-color: white;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.home-continue-red-circle{
+    background-color: red;
+    width: 4vw;
+    height: 3vw;
+    border-radius: 50%;
+}
