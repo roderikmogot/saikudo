@@ -17,8 +17,8 @@ function NewOrder(){
                 </div>
                 <div className="app-table-form">
                     <input className="app-table-text" type="text" placeholder="Nama Pemesan" />
-                    <input className="app-table-text" type="text" placeholder="Nomer Meja" />
-                    <input className="app-table-text" type="text" placeholder="Nomer Telepon (optional)" />
+                    <input className="app-table-text" type="text" placeholder="Nomor Meja" />
+                    <input className="app-table-text" type="text" placeholder="Nomor Telepon (optional)" />
                 </div>
                 <div className="app-table-form-submit">
                     <button className='app-submit'><Link to="/order" style={{ textDecoration: 'none', color: 'white' }}>Konfirmasi</Link></button>

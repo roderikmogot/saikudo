@@ -3,8 +3,9 @@ import Logo from "../img/logo.png";
 
 import "../css/Order.css";
 
-import { FaGlassCheers, FaUtensilSpoon, FaPlus } from "react-icons/fa";
-import { BsImage } from "react-icons/bs";
+import { FaGlassCheers, FaUtensilSpoon } from "react-icons/fa";
+import FoodItem from "../components/FoodItem";
+import Category from "../components/Category";
 
 function Order() {
   return (
@@ -26,232 +27,17 @@ function Order() {
             <div className="order-list">
               <div className="order-title">Pilih menu disini</div>
               <div className="order-category">
-                <button>
-                  <div className="category">
-                    <FaGlassCheers size={30} />
-                    <div className="category-description">Minuman</div>
-                  </div>
-                </button>
-                <button>
-                  <div className="category">
-                    <FaUtensilSpoon size={30} />
-                    <div className="category-description">Makanan</div>
-                  </div>
-                </button>
+                <Category icon={<FaGlassCheers size={30}/>} type="Minuman" />
+                <Category icon={<FaGlassCheers size={30}/>} type="Makanan" />
+                <Category icon={<FaGlassCheers size={30}/>} type="Makanan" />
+                <Category icon={<FaGlassCheers size={30}/>} type="Makanan" />
               </div>
             </div>
           </div>
           <div class="list-of-foods">
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Fukuyama</div>
-                <div class="food-description">3 Tusuk (biru)</div>
-                <div class="food-price">Rp 21.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Hiroshima</div>
-                <div class="food-description">3 Tusuk (biru & merah)</div>
-                <div class="food-price">Rp 26.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="food">
-              <div class="food-image">
-                <img class="image" src={Logo} width="100%" alt="Food" />
-              </div>
-              <div class="food-id">
-                <div class="food-title">Matsuyama</div>
-                <div class="food-description">
-                  4 Tusuk (Biru, Hijau & Merah)
-                </div>
-                <div class="food-price">Rp 32.000</div>
-                <div class="food-select">
-                  <a href="#">
-                    Pilih &nbsp;
-                    <FaPlus />
-                  </a>
-                </div>
-              </div>
-            </div>
+            <FoodItem image={Logo} title="Matsuyama" description="4 Tusuk (Biru, Hijau & Merah)" price="32.000" />
+            <FoodItem image={Logo} title="Matsuyama" description="4 Tusuk (Biru, Hijau & Merah)" price="32.000" />
+            <FoodItem image={Logo} title="Matsuyama" description="4 Tusuk (Biru, Hijau & Merah)" price="32.000" />
           </div>
         </div>
 
