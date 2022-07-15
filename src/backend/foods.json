@@ -1,0 +1,51 @@
+[
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Mie Goreng",
+    "isStocked": true
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Mie Kuah",
+    "isStocked": true
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Mie Ayam",
+    "isStocked": true
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Nasi Goreng",
+    "isStocked": false
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Nasi Goreng",
+    "isStocked": false
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Nasi Goreng",
+    "isStocked": false
+  },
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "Nasi Goreng",
+    "isStocked": false
+  }
+]

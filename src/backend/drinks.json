@@ -1,0 +1,37 @@
+[
+  {
+    "type": "Minuman",
+    "price": "24.000",
+    "description": "Reg Size Coca Cola",
+    "title": "Coca Cola",
+    "isStocked": true
+  },
+  {
+    "type": "Minuman",
+    "price": "25.000",
+    "description": "Bintang",
+    "title": "Beer",
+    "isStocked": true
+  },
+  {
+    "type": "Minuman",
+    "price": "34.000",
+    "description": "Ice Tea",
+    "title": "Ice Tea",
+    "isStocked": true
+  },
+  {
+    "type": "Minuman",
+    "price": "14.000",
+    "description": "Sweet Ice Tea",
+    "title": "Sweet Ice Tea",
+    "isStocked": false
+  },
+  {
+    "type": "Minuman",
+    "price": "14.000",
+    "description": "Sweet Ice Tea",
+    "title": "Sweet Ice Tea",
+    "isStocked": false
+  }
+]
