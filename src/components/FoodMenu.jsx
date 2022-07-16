@@ -11,7 +11,7 @@ const FoodMenu = ({ image, title, description, price }) => {
         <div className="food-description">{description}</div>
         <div className="food-end">
           <div className="food-price">Rp {price}</div>
-          <div className="food-select">
+          <div className="food-edit">
             <a href="#">Edit</a>
           </div>
         </div>
