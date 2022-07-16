@@ -1,9 +1,1 @@
-[
-  {
-    "type": "Minuman",
-    "price": "24.000",
-    "description": "Sweet Ice Tea",
-    "title": "Ice Tea",
-    "isStocked": true
-  }
-]
+[{"type":"Minuman","price":"24.000","description":"Sweet Ice Tea","title":"Ice Tea","isStocked":true},{"type":"minuman","price":"asdf","title":"asdfasdf","description":"asdfasdf","isStocked":true,"imagePath":"asdfasd"}]

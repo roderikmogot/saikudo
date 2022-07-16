@@ -2,16 +2,16 @@ import "../css/Edit.css";
 
 const FoodMenu = ({ image, title, description, price }) => {
   return (
-    <div class="food">
-      <div class="food-image">
-        <img class="image" src={image} width="100%" alt="Food" />
+    <div className="food">
+      <div className="food-image">
+        <img className="image" src={image} width="100%" alt="Food" />
       </div>
-      <div class="food-id">
-        <div class="food-title">{title}</div>
-        <div class="food-description">{description}</div>
-        <div class="food-end">
-          <div class="food-price">Rp {price}</div>
-          <div class="food-select">
+      <div className="food-id">
+        <div className="food-title">{title}</div>
+        <div className="food-description">{description}</div>
+        <div className="food-end">
+          <div className="food-price">Rp {price}</div>
+          <div className="food-select">
             <a href="#">Edit</a>
           </div>
         </div>

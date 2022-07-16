@@ -40,11 +40,11 @@ const Modal = ({ show, onClose, foodType }) => {
         allMenu.push(newMenu);
 
         try {
-          await axios.post(`http://localhost:4000/add_${foodType}`, {
-            allMenu,
+          await axios.post(`http://localhost:3030/add_${foodType}`, {
+            allMenu
           });
         } catch (err) {
-          console.log(err);
+          console.log("Error submitting data ", err);
         }
       };
 

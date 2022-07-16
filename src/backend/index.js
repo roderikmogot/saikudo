@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
 
-const PORT = 4000;
+const PORT = 3030;
 
 const app = express();
 
@@ -17,64 +17,64 @@ app.get("/", cors(), async (req, res) => {
 });
 
 app.post("/add_makanan", async (req, res) => {
-  let { allFood } = req.body;
+  let allFood = req.body["allMenu"];
 
   // write menu to allFood
   let allFoodJSON = JSON.stringify(allFood);
-  fs.writeFileSync("./foods.json", allFoodJSON, (err) => {
+  fs.writeFile("./foods.json", allFoodJSON, "utf8", function (err) {
     if (err) {
-      console.log(err);
-      throw err;
+      return console.log(err);
     }
-    console.log("Data written to './foods.json'");
+
+    console.log("The file was saved!");
   });
 
   console.log(allFood);
 });
 
 app.post("/add_minuman", async (req, res) => {
-  let { allFood } = req.body;
+  let allFood = req.body["allMenu"];
 
   // write menu to allFood
   let allFoodJSON = JSON.stringify(allFood);
-  fs.writeFileSync("./drinks.json", allFoodJSON, (err) => {
+  fs.writeFile("./drinks.json", allFoodJSON, "utf8", function (err) {
     if (err) {
-      console.log(err);
-      throw err;
+      return console.log(err);
     }
-    console.log("Data written to './drinks.json'");
+
+    console.log("The file was saved!");
   });
 
   console.log(allFood);
 });
 
 app.post("/add_packet", async (req, res) => {
-  let { allFood } = req.body;
+  let allFood = req.body["allMenu"];
 
   // write menu to allFood
   let allFoodJSON = JSON.stringify(allFood);
-  fs.writeFileSync("./packets.json", allFoodJSON, (err) => {
+  fs.writeFile("./packets.json", allFoodJSON, "utf8", function (err) {
     if (err) {
-      console.log(err);
-      throw err;
+      return console.log(err);
     }
-    console.log("Data written to './packets.json'");
+
+    console.log("The file was saved!");
   });
 
   console.log(allFood);
 });
 
 app.post("/add_cemilan", async (req, res) => {
-  let { allFood } = req.body;
+  let allFood = req.body["allMenu"];
 
   // write menu to allFood
   let allFoodJSON = JSON.stringify(allFood);
-  fs.writeFileSync("./extras.json", allFoodJSON, (err) => {
+  fs.writeFile("./extras.json", allFoodJSON, "utf8", function (err) {
     if (err) {
-      console.log(err);
-      throw err;
+      return console.log(err);
     }
-    console.log("Data written to './extras.json'");
+
+    console.log("The file was saved!");
   });
 
   console.log(allFood);

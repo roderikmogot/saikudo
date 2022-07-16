@@ -74,9 +74,10 @@ function Edit() {
       </div>
 
       <div class="list-of-foods">
-        {showItems.map((item) => {
+        {showItems.map((item, index) => {
           return (
             <FoodMenu
+              key={index}
               image={Logo}
               title={item.title}
               description={item.description}
