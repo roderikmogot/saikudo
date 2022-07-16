@@ -13,6 +13,7 @@ const Modal = ({ show, onClose, foodType }) => {
   const [newMenuName, setNewMenuName] = useState("");
   const [newMenuDescription, setNewMenuDescription] = useState("");
   const [newMenuPrice, setNewMenuPrice] = useState("");
+  const [newMenuPacketType, setNewMenuPacketType] = useState("");
   const [newMenuIsStocked, setNewMenuIsStocked] = useState("Yes");
 
   if (!show) {
@@ -27,7 +28,7 @@ const Modal = ({ show, onClose, foodType }) => {
         isStocked = false;
       }
 
-      const newMenu = {
+      let newMenu = {
         type: foodType,
         price: newMenuPrice,
         title: newMenuName,
@@ -36,12 +37,24 @@ const Modal = ({ show, onClose, foodType }) => {
         imagePath: newMenuImage,
       };
 
+      if (foodType === "cemilan") {
+        newMenu = {
+          type: foodType,
+          price: newMenuPrice,
+          title: newMenuName,
+          description: newMenuDescription,
+          isStocked: isStocked,
+          imagePath: newMenuImage,
+          packet: newMenuPacketType
+        };
+      }
+
       const sendDataToBackend = async (foodType, allMenu, newMenu) => {
         allMenu.push(newMenu);
 
         try {
           await axios.post(`http://localhost:3030/add_${foodType}`, {
-            allMenu
+            allMenu,
           });
         } catch (err) {
           console.log("Error submitting data ", err);
@@ -116,6 +129,24 @@ const Modal = ({ show, onClose, foodType }) => {
               <option value="No">No</option>
             </select>
           </div>
+          {foodType === "cemilan" && (
+            <div className="new-menu-is-available">
+              Paket:
+              <select
+                required
+                value={newMenuPacketType}
+                onChange={(e) => setNewMenuPacketType(e.target.value)}
+              >
+                {packet.map((paket) => {
+                  return (
+                    <option key={paket.title} value={paket.title}>
+                      {paket.title}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
         </div>
         <div className="modal-footer">
           <button className="button" onClick={onClose}>

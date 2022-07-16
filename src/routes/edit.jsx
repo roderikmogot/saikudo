@@ -24,7 +24,7 @@ function Edit() {
 
   const [modalFoodType, setModalFoodType] = useState("makanan");
 
-  const allItems = [...allFood, ...allDrinks, ...allPackets, ...allExtras];
+  const allItems = [...allFood];
 
   const [showItems, setShowItems] = useState(allItems);
 
@@ -35,7 +35,10 @@ function Edit() {
         <div className="order-container">
           <div className="order-list">
             <div className="order-title">Pilih menu disini</div>
-            <div className="order-category">
+            <div className="order-category" style={{
+              display: "flex",
+              flexDirection: "row",
+            }}>
               <div
                 onClick={() => {
                   setShowItems(allFood);

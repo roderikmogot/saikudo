@@ -10,14 +10,14 @@
     "type": "Makanan",
     "price": "24.000",
     "description": "3 Tusuk (Biru & Hijau)",
-    "title": "Matsuyama",
+    "title": "test",
     "isStocked": true
   },
   {
     "type": "Makanan",
     "price": "24.000",
     "description": "3 Tusuk (Biru & Hijau)",
-    "title": "Matsuyama",
+    "title": "23",
     "isStocked": true
   },
   {
@@ -26,5 +26,13 @@
     "description": "3 Tusuk (Biru & Hijau)",
     "title": "Hiroshima",
     "isStocked": false
+  },
+  {
+    "type": "packet",
+    "price": "444",
+    "title": "asdf",
+    "description": "123",
+    "isStocked": true,
+    "imagePath": "22"
   }
 ]
