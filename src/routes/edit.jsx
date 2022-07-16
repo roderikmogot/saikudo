@@ -80,17 +80,20 @@ function Edit() {
         {showItems.map((item, index) => {
           return (
             <FoodMenu
+              id={index}
+              allData={showItems}
+              foodType={item.type}
               key={index}
               image={Logo}
               title={item.title}
               description={item.description}
               price={item.price}
+              paket={item.paket}
             />
           );
         })}
       </div>
 
-      {/* Working on this one */}
       <div className="add-new-menu-button" onClick={() => setShowModal(true)}>
         <FaPlus size={25} style={{ color: "#fff" }} />
       </div>

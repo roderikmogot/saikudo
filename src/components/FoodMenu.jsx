@@ -1,6 +1,19 @@
 import "../css/Edit.css";
 
-const FoodMenu = ({ image, title, description, price }) => {
+import { useState } from "react";
+import EditMenuModal from "./EditMenuModal";
+
+const FoodMenu = ({
+  id,
+  allData,
+  foodType,
+  image,
+  title,
+  description,
+  price,
+  paket,
+}) => {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="food">
       <div className="food-image">
@@ -11,9 +24,21 @@ const FoodMenu = ({ image, title, description, price }) => {
         <div className="food-description">{description}</div>
         <div className="food-end">
           <div className="food-price">Rp {price}</div>
-          <div className="food-edit">
+          <div className="food-edit" onClick={() => setShowModal(true)}>
             <a href="#">Edit</a>
           </div>
+          <EditMenuModal
+            onClose={() => setShowModal(false)}
+            show={showModal}
+            id={id}
+            allData={allData}
+            foodType={foodType}
+            image={image}
+            title={title}
+            description={description}
+            price={price}
+            paket={paket}
+          />
         </div>
       </div>
     </div>
