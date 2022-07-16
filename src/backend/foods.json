@@ -47,5 +47,21 @@
     "description": "3 Tusuk (Biru & Hijau)",
     "title": "Nasi Goreng",
     "isStocked": false
+  },
+  {
+    "type": "Makanan",
+    "price": "asdf",
+    "title": "asdf",
+    "description": "asdf",
+    "isStocked": true,
+    "imagePath": "asdf"
+  },
+  {
+    "type": "Makanan",
+    "price": "4412331",
+    "title": "44",
+    "description": "123",
+    "isStocked": true,
+    "imagePath": "123"
   }
 ]

@@ -22,16 +22,11 @@ import allExtras from "../backend/extras.json";
 function Edit() {
   const [showModal, setShowModal] = useState(false);
 
-  const [showFoods, setShowFoods] = useState(false);
-  const [showDrinks, setShowDrinks] = useState(false);
-  const [showPackets, setShowPackets] = useState(false);
-  const [showExtras, setShowExtras] = useState(false);
+  const [modalFoodType, setModalFoodType] = useState("makanan");
 
   const allItems = [...allFood, ...allDrinks, ...allPackets, ...allExtras];
 
   const [showItems, setShowItems] = useState(allItems);
-
-  console.log(showItems);
 
   return (
     <div>
@@ -41,20 +36,36 @@ function Edit() {
           <div className="order-list">
             <div className="order-title">Pilih menu disini</div>
             <div className="order-category">
-              <div onClick={() => setShowItems(allFood)}>
-                <Category
-                  icon={<FaUtensilSpoon size={25} />}
-                  type="Makanan"
-                  onClick={() => setShowItems(allFood)}
-                />
+              <div
+                onClick={() => {
+                  setShowItems(allFood);
+                  setModalFoodType("makanan");
+                }}
+              >
+                <Category icon={<FaUtensilSpoon size={25} />} type="Makanan" />
               </div>
-              <div onClick={() => setShowItems(allDrinks)}>
+              <div
+                onClick={() => {
+                  setShowItems(allDrinks);
+                  setModalFoodType("minuman");
+                }}
+              >
                 <Category icon={<FaGlassCheers size={25} />} type="Minuman" />
               </div>
-              <div onClick={() => setShowItems(allPackets)}>
+              <div
+                onClick={() => {
+                  setShowItems(allPackets);
+                  setModalFoodType("packet");
+                }}
+              >
                 <Category icon={<FaThLarge size={25} />} type="Packet" />
               </div>
-              <div onClick={() => setShowItems(allExtras)}>
+              <div
+                onClick={() => {
+                  setShowItems(allExtras);
+                  setModalFoodType("cemilan");
+                }}
+              >
                 <Category icon={<FaPlus size={25} />} type="Cemilan" />
               </div>
             </div>
@@ -80,7 +91,11 @@ function Edit() {
         <FaPlus size={25} style={{ color: "#fff" }} />
       </div>
 
-      <Modal onClose={() => setShowModal(false)} show={showModal} />
+      <Modal
+        onClose={() => setShowModal(false)}
+        show={showModal}
+        foodType={modalFoodType}
+      />
     </div>
   );
 }

@@ -1,9 +1,14 @@
 import { useState } from "react";
 import "../css/Modal.css";
 
-import allFood from "../backend/foods.json";
+import makanan from "../backend/foods.json";
+import minuman from "../backend/drinks.json";
+import packet from "../backend/packets.json";
+import cemilan from "../backend/extras.json";
 
-const Modal = ({ show, onClose }) => {
+import axios from "axios";
+
+const Modal = ({ show, onClose, foodType }) => {
   const [newMenuImage, setNewMenuImage] = useState("");
   const [newMenuName, setNewMenuName] = useState("");
   const [newMenuDescription, setNewMenuDescription] = useState("");
@@ -14,7 +19,7 @@ const Modal = ({ show, onClose }) => {
     return null;
   }
 
-  const addNewMenuHandler = (e) => {
+  const addNewMenuHandler = async (e) => {
     if (newMenuPrice && newMenuName && newMenuDescription) {
       let isStocked = true;
 
@@ -23,7 +28,7 @@ const Modal = ({ show, onClose }) => {
       }
 
       const newMenu = {
-        type: "Makanan",
+        type: foodType,
         price: newMenuPrice,
         title: newMenuName,
         description: newMenuDescription,
@@ -31,16 +36,27 @@ const Modal = ({ show, onClose }) => {
         imagePath: newMenuImage,
       };
 
-      allFood.push(newMenu);
+      const sendDataToBackend = async (foodType, allMenu, newMenu) => {
+        allMenu.push(newMenu);
 
-      // save file
-      const allFoodJSON = JSON.stringify(allFood);
-      const blob = new Blob([allFoodJSON], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.download = "foods.json";
-      link.href = url;
-      link.click();
+        try {
+          await axios.post(`http://localhost:4000/add_${foodType}`, {
+            allMenu,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      if (foodType === "makanan") {
+        sendDataToBackend(foodType, makanan, newMenu);
+      } else if (foodType === "minuman") {
+        sendDataToBackend(foodType, minuman, newMenu);
+      } else if (foodType === "packet") {
+        sendDataToBackend(foodType, packet, newMenu);
+      } else if (foodType === "cemilan") {
+        sendDataToBackend(foodType, cemilan, newMenu);
+      }
     }
 
     setTimeout(() => {
@@ -52,7 +68,7 @@ const Modal = ({ show, onClose }) => {
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h4>Add new menu</h4>
+          <h4>Add new {foodType}</h4>
         </div>
         <div className="modal-body">
           <div className="new-menu-form">
@@ -64,12 +80,12 @@ const Modal = ({ show, onClose }) => {
               placeholder="Masukkan nama gambar (dengan format)"
               onChange={(e) => setNewMenuImage(e.target.value)}
             />
-            Masukkan nama makanan:
+            Masukkan nama {foodType}:
             <input
               required
               className="app-table-text"
               type="text"
-              placeholder="Masukkan nama makanan"
+              placeholder={`Masukkan nama ${foodType}`}
               onChange={(e) => setNewMenuName(e.target.value)}
             />
             Masukkan deskripsi:
