@@ -66,6 +66,7 @@ app.post("/add_packet", async (req, res) => {
 
 app.post("/add_cemilan", async (req, res) => {
   let allFood = req.body["allMenu"];
+  console.log(allFood)
 
   // write menu to allFood
   let allFoodJSON = JSON.stringify(allFood);

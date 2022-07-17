@@ -82,7 +82,7 @@ function Edit() {
             <FoodMenu
               id={index}
               allData={showItems}
-              foodType={item.type}
+              foodType={modalFoodType}
               key={index}
               image={Logo}
               title={item.title}

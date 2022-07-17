@@ -1,3 +1,5 @@
+import '../css/EditModal.css'
+
 import { useState } from "react";
 import axios from "axios";
 
@@ -41,7 +43,8 @@ const EditMenuModal = ({
       imagePath: editMenuImage,
     };
 
-    if (foodType === "Cemilan") {
+    if (foodType === "Cemilan" || foodType === "cemilan") {
+      console.log("ini adalah data cemilan")
       newMenu = {
         price: editMenuPrice,
         title: editMenuName,
@@ -55,6 +58,7 @@ const EditMenuModal = ({
     allData[id] = newMenu;
     const allMenu = allData;
     console.log(newMenu, id);
+    console.log(allMenu);
 
     try {
       await axios.post(`http://localhost:3030/add_${foodType.toLowerCase()}`, {
@@ -69,12 +73,12 @@ const EditMenuModal = ({
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div className="modal-header">
+    <div className="edit-edit-modal">
+      <div className="edit-modal-content">
+        <div className="edit-modal-header">
           <h4>Add new {foodType}</h4>
         </div>
-        <div className="modal-body">
+        <div className="edit-modal-body">
           <div className="new-menu-form">
             Edit nama gambar:
             <input
@@ -85,7 +89,7 @@ const EditMenuModal = ({
               placeholder={`${image}`}
               onChange={(e) => setEditMenuImage(e.target.value)}
             />
-            Edit nama {foodType.toLowerCase()}:
+            Edit nama:
             <input
               required
               className="app-table-text"
@@ -124,7 +128,7 @@ const EditMenuModal = ({
               <option value="No">No</option>
             </select>
           </div>
-          {foodType === "Cemilan" && (
+          {(foodType === "Cemilan" || foodType === "cemilan") && (
             <div className="new-menu-is-available">
               Edit Paket:
               <select
@@ -143,7 +147,7 @@ const EditMenuModal = ({
             </div>
           )}
         </div>
-        <div className="modal-footer">
+        <div className="edit-modal-footer">
           <button className="button" onClick={onClose}>
             Batal
           </button>
