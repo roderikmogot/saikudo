@@ -1,4 +1,4 @@
-import '../css/EditModal.css'
+import "../css/EditModal.css";
 
 import { useState } from "react";
 import axios from "axios";
@@ -44,7 +44,7 @@ const EditMenuModal = ({
     };
 
     if (foodType === "Cemilan" || foodType === "cemilan") {
-      console.log("ini adalah data cemilan")
+      console.log("ini adalah data cemilan");
       newMenu = {
         price: editMenuPrice,
         title: editMenuName,
@@ -59,6 +59,24 @@ const EditMenuModal = ({
     const allMenu = allData;
     console.log(newMenu, id);
     console.log(allMenu);
+
+    try {
+      await axios.post(`http://localhost:3030/add_${foodType.toLowerCase()}`, {
+        allMenu,
+      });
+    } catch (err) {
+      setTimeout(() => {
+        onClose();
+      }, 500);
+      console.log("Error submitting data ", err);
+    }
+  };
+
+  const deleteMenuHandler = async (e) => {
+    allData.splice(id, 1);
+    const allMenu = allData;
+
+    console.log(allMenu)
 
     try {
       await axios.post(`http://localhost:3030/add_${foodType.toLowerCase()}`, {
@@ -150,6 +168,9 @@ const EditMenuModal = ({
         <div className="edit-modal-footer">
           <button className="button" onClick={onClose}>
             Batal
+          </button>
+          <button className="button" onClick={deleteMenuHandler}>
+            Delete
           </button>
           <button className="button" onClick={editMenuHandler}>
             Edit
