@@ -24,15 +24,18 @@ function Order() {
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
+  const [filterItems, setFilterItems] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
   let availableFoods = showItems.filter(
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
 
-  console.log(data);
-
   if (
-    (data[0]["userName"] === "" || !data[0]["userName"]) ||
-    (!data[0]["tableNum"] || data[0]["tableNum"] === "")
+    data[0]["userName"] === "" ||
+    !data[0]["userName"] ||
+    !data[0]["tableNum"] ||
+    data[0]["tableNum"] === ""
   ) {
     return (window.location.href = "http://localhost:3000/home");
   }
@@ -41,15 +44,16 @@ function Order() {
 
   const searchMenuHandler = (e) => {
     e = e.toLowerCase();
-    const searchFood = [...availableFoods].filter((food) => {
-      if (e === "") {
-        return food;
-      } else {
-        return food.title.toLowerCase().includes(e);
-      }
+    console.log(e);
+    const filterFood = availableFoods.filter((food) => {
+      return food.title.toLowerCase().includes(e);
     });
-    setShowItems(searchFood);
+    setFilterItems(filterFood);
   };
+
+  if(searchInput === "" && filterItems.length !== 0){
+    setFilterItems([])
+  }
 
   return (
     <div>
@@ -61,7 +65,10 @@ function Order() {
             className="search-text"
             type="text"
             placeholder="Cari snack, makanan atau minuman..."
-            onChange={(e) => searchMenuHandler(e.target.value)}
+            onChange={(e) => {
+              searchMenuHandler(e.target.value);
+              setSearchInput(e.target.value);
+            }}
           />
         </div>
       </div>
@@ -104,19 +111,43 @@ function Order() {
               </div>
             </div>
           </div>
-          <div className="list-of-foods">
-            {availableFoods.map((food) => {
+          {(() => {
+            console.log(searchInput, filterItems.length)
+            if (filterItems.length > 0 || searchInput) {
               return (
-                <FoodItem
-                  key={food.title}
-                  image={Logo}
-                  title={food.title}
-                  description={food.description}
-                  price={food.price}
-                />
+                <div className="list-of-foods">
+                  {filterItems.length > 0 &&
+                    filterItems.map((food) => {
+                      return (
+                        <FoodItem
+                          key={food.title}
+                          image={Logo}
+                          title={food.title}
+                          description={food.description}
+                          price={food.price}
+                        />
+                      );
+                    })}
+                </div>
               );
-            })}
-          </div>
+            } else {
+              return (
+                <div className="list-of-foods">
+                  {availableFoods.map((food) => {
+                    return (
+                      <FoodItem
+                        key={food.title}
+                        image={Logo}
+                        title={food.title}
+                        description={food.description}
+                        price={food.price}
+                      />
+                    );
+                  })}
+                </div>
+              );
+            }
+          })()}
         </div>
 
         <div className="list-of-orders">
