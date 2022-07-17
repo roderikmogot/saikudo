@@ -12,10 +12,10 @@ const FoodItem = ({ image, title, description, price }) => {
         <div className="food-description">{description}</div>
         <div className="food-price">Rp {price}</div>
         <div className="food-select">
-          <a href="#">
+          <button>
             Pilih
             <FaPlus />
-          </a>
+          </button>
         </div>
       </div>
     </div>

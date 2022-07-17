@@ -44,7 +44,6 @@ function Order() {
 
   const searchMenuHandler = (e) => {
     e = e.toLowerCase();
-    console.log(e);
     const filterFood = availableFoods.filter((food) => {
       return food.title.toLowerCase().includes(e);
     });
@@ -112,7 +111,6 @@ function Order() {
             </div>
           </div>
           {(() => {
-            console.log(searchInput, filterItems.length)
             if (filterItems.length > 0 || searchInput) {
               return (
                 <div className="list-of-foods">

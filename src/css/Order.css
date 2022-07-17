@@ -222,7 +222,8 @@ hr{
     align-items: center;
 }
 
-.food-id > .food-select > a{
+.food-id > .food-select > button{
+    border: none;
     margin-top: 2vh;
     width: 100%;
     text-decoration: none;
