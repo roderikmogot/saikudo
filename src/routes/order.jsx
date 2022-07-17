@@ -1,27 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../img/logo.png";
 
 import "../css/Order.css";
 
-import { FaGlassCheers, FaUtensilSpoon } from "react-icons/fa";
+import { FaGlassCheers, FaUtensilSpoon, FaThLarge } from "react-icons/fa";
 import FoodItem from "../components/FoodItem";
 import Category from "../components/Category";
 
 import { useLocation } from "react-router-dom";
 
-import allFoods from "../backend/foods.json";
+import makanan from "../backend/foods.json";
+import minuman from "../backend/drinks.json";
+import packet from "../backend/packets.json";
+import cemilan from "../backend/extras.json";
 
 function Order() {
-  
   // Get data from App.js
   const location = useLocation();
   const data = location.state;
 
   const order = { ...data[0] };
 
-  console.log(order);
+  const [listOfOrders, setListOfOrders] = useState([]);
 
-  const availableFoods = allFoods.filter((food) => food.isStocked === true);
+  const allFoods = [...makanan, ...minuman, ...packet];
+  const [showItems, setShowItems] = useState(allFoods);
+
+  const availableFoods = showItems.filter(
+    (food) => food.isStocked === "Yes" || food.isStocked === true
+  );
 
   return (
     <div>
@@ -41,11 +48,37 @@ function Order() {
           <div className="order-container">
             <div className="order-list">
               <div className="order-title">Pilih menu disini</div>
-              <div className="order-category">
-                <Category icon={<FaGlassCheers size={30} />} type="Minuman" />
-                <Category icon={<FaGlassCheers size={30} />} type="Makanan" />
-                <Category icon={<FaGlassCheers size={30} />} type="Makanan" />
-                <Category icon={<FaGlassCheers size={30} />} type="Makanan" />
+              <div
+                className="order-category"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                }}
+              >
+                <div
+                  onClick={() => {
+                    setShowItems(makanan);
+                  }}
+                >
+                  <Category
+                    icon={<FaUtensilSpoon size={25} />}
+                    type="Makanan"
+                  />
+                </div>
+                <div
+                  onClick={() => {
+                    setShowItems(minuman);
+                  }}
+                >
+                  <Category icon={<FaGlassCheers size={25} />} type="Minuman" />
+                </div>
+                <div
+                  onClick={() => {
+                    setShowItems(packet);
+                  }}
+                >
+                  <Category icon={<FaThLarge size={25} />} type="Packet" />
+                </div>
               </div>
             </div>
           </div>
@@ -61,24 +94,6 @@ function Order() {
                 />
               );
             })}
-            <FoodItem
-              image={Logo}
-              title="Matsuyama"
-              description="4 Tusuk (Biru, Hijau & Merah)"
-              price="32.000"
-            />
-            <FoodItem
-              image={Logo}
-              title="Matsuyama"
-              description="4 Tusuk (Biru, Hijau & Merah)"
-              price="32.000"
-            />
-            <FoodItem
-              image={Logo}
-              title="Matsuyama"
-              description="4 Tusuk (Biru, Hijau & Merah)"
-              price="32.000"
-            />
           </div>
         </div>
 
@@ -86,26 +101,14 @@ function Order() {
           <div>
             <div className="list-of-orders-title">Pesanan Anda</div>
             <div className="list-of-orders-list">
-              <div className="list-of-orders-selection">1 Paket Fukuyama</div>
-              <div className="list-of-orders-selection">1 Paket Matsuyama</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
-
-              <div className="list-of-orders-selection">1 Paket Hiroshima</div>
+              {listOfOrders.length > 0 &&
+                listOfOrders.map((order, idx) => {
+                  return (
+                    <div key={idx} className="list-of-orders-selection">
+                      {order.title}
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
