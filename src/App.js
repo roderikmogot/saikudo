@@ -37,7 +37,6 @@ function NewOrder() {
             onChange={(e) => setTableNum(e.target.value)}
           />
           <input
-          required
             className="app-table-text"
             type="text"
             placeholder="Nomor Telepon (optional)"

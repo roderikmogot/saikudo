@@ -24,15 +24,32 @@ function Order() {
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
-  const availableFoods = showItems.filter(
+  let availableFoods = showItems.filter(
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
 
-  if(!data){
-    return window.location.href = "http://localhost:3000/home";;
+  console.log(data);
+
+  if (
+    (data[0]["userName"] === "" || !data[0]["userName"]) ||
+    (!data[0]["tableNum"] || data[0]["tableNum"] === "")
+  ) {
+    return (window.location.href = "http://localhost:3000/home");
   }
 
   const order = { ...data[0] };
+
+  const searchMenuHandler = (e) => {
+    e = e.toLowerCase();
+    const searchFood = [...availableFoods].filter((food) => {
+      if (e === "") {
+        return food;
+      } else {
+        return food.title.toLowerCase().includes(e);
+      }
+    });
+    setShowItems(searchFood);
+  };
 
   return (
     <div>
@@ -44,6 +61,7 @@ function Order() {
             className="search-text"
             type="text"
             placeholder="Cari snack, makanan atau minuman..."
+            onChange={(e) => searchMenuHandler(e.target.value)}
           />
         </div>
       </div>
