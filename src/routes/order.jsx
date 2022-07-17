@@ -19,8 +19,6 @@ function Order() {
   const location = useLocation();
   const data = location.state;
 
-  const order = { ...data[0] };
-
   const [listOfOrders, setListOfOrders] = useState([]);
 
   const allFoods = [...makanan, ...minuman, ...packet];
@@ -29,6 +27,12 @@ function Order() {
   const availableFoods = showItems.filter(
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
+
+  if(!data){
+    return window.location.href = "http://localhost:3000/home";;
+  }
+
+  const order = { ...data[0] };
 
   return (
     <div>

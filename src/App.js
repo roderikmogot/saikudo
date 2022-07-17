@@ -20,20 +20,24 @@ function NewOrder() {
           Silahkan isi data berikut untuk
           <br /> melakukan pemesanan
         </div>
+        <form>
         <div className="app-table-form">
           <input
+            required
             className="app-table-text"
             type="text"
             placeholder="Nama Pemesan"
             onChange={(e) => setUserName(e.target.value)}
           />
           <input
+            required
             className="app-table-text"
             type="text"
             placeholder="Nomor Meja"
             onChange={(e) => setTableNum(e.target.value)}
           />
           <input
+          required
             className="app-table-text"
             type="text"
             placeholder="Nomor Telepon (optional)"
@@ -57,6 +61,7 @@ function NewOrder() {
             </Link>
           </button>
         </div>
+        </form>
       </div>
     </div>
   );

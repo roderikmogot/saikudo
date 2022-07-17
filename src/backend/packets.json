@@ -1,1 +1,9 @@
-[{"type":"Makanan","price":"24.000","description":"3 Tusuk (Biru & Hijau)","title":"test","isStocked":true}]
+[
+  {
+    "type": "Makanan",
+    "price": "24.000",
+    "description": "3 Tusuk (Biru & Hijau)",
+    "title": "test",
+    "isStocked": true
+  }
+]

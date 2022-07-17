@@ -1,1 +1,34 @@
-[{"type":"minuman","price":"12312","title":"4","description":"444","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"minuman","price":"12312","title":"123","description":"444","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"minuman","price":"4","title":"22","description":"444","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"minuman","price":"22","title":"2123123123","description":"444","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"}]
+[
+  {
+    "type": "minuman",
+    "price": "12312",
+    "title": "4",
+    "description": "444",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
+  },
+  {
+    "type": "minuman",
+    "price": "12312",
+    "title": "123",
+    "description": "444",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
+  },
+  {
+    "type": "minuman",
+    "price": "4",
+    "title": "22",
+    "description": "444",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
+  },
+  {
+    "type": "minuman",
+    "price": "22",
+    "title": "2123123123",
+    "description": "444",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
+  }
+]
