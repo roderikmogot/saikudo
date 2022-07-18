@@ -1,7 +1,12 @@
 import { FaPlus } from "react-icons/fa";
-import '../css/Order.css'
+import "../css/Order.css";
 
-const FoodItem = ({ image, title, description, price }) => {
+const FoodItem = ({ image, title, description, price, addItem }) => {
+  const foodItem = {
+    title: title,
+    price: price,
+    quantity: 1,
+  };
   return (
     <div className="food">
       <div className="food-image">
@@ -12,7 +17,7 @@ const FoodItem = ({ image, title, description, price }) => {
         <div className="food-description">{description}</div>
         <div className="food-price">Rp {price}</div>
         <div className="food-select">
-          <button>
+          <button onClick={(e) => addItem(e, foodItem)}>
             Pilih
             <FaPlus />
           </button>

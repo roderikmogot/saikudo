@@ -20,6 +20,7 @@ function Order() {
   const data = location.state;
 
   const [listOfOrders, setListOfOrders] = useState([]);
+  const [totalPayment, setTotalPayment] = useState(0);
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
@@ -50,9 +51,38 @@ function Order() {
     setFilterItems(filterFood);
   };
 
-  if(searchInput === "" && filterItems.length !== 0){
-    setFilterItems([])
+  if (searchInput === "" && filterItems.length !== 0) {
+    setFilterItems([]);
   }
+
+  const addMenuHandler = (e, item) => {
+    for (let i = 0; i < listOfOrders.length; i++) {
+      if (item.title === listOfOrders[i]["title"]) {
+        let updateExisting = listOfOrders.map((order, i) => {
+          if (order.title === item.title) {
+            return { ...order, quantity: order.quantity + 1 };
+          } else {
+            return order;
+          }
+        });
+        setListOfOrders([...updateExisting]);
+        updatePriceHandler([...updateExisting]);
+        return;
+      }
+    }
+    setListOfOrders([...listOfOrders, item]);
+    updatePriceHandler([...listOfOrders, item]);
+  };
+
+  const updatePriceHandler = (listOfOrders) => {
+    let totalPrice = 0;
+    listOfOrders.map((order, i) => {
+      let price = order.price.split(".").join("");
+      totalPrice += +price * order.quantity;
+      return order;
+    });
+    setTotalPayment(totalPrice);
+  };
 
   return (
     <div>
@@ -123,6 +153,7 @@ function Order() {
                           title={food.title}
                           description={food.description}
                           price={food.price}
+                          addItem={addMenuHandler}
                         />
                       );
                     })}
@@ -139,6 +170,7 @@ function Order() {
                         title={food.title}
                         description={food.description}
                         price={food.price}
+                        addItem={addMenuHandler}
                       />
                     );
                   })}
@@ -156,7 +188,7 @@ function Order() {
                 listOfOrders.map((order, idx) => {
                   return (
                     <div key={idx} className="list-of-orders-selection">
-                      {order.title}
+                      {order.quantity} &nbsp; {order.title}
                     </div>
                   );
                 })}
@@ -169,12 +201,24 @@ function Order() {
               Rincian Harga
             </div>
             <div className="list-of-orders-to-pay">
-              <div className="list-of-orders-total-payment-subtotal">
-                Subtotal
-              </div>
-              <div className="list-of-orders-total-payment-subtotal-price">
-                Rp 21.000
-              </div>
+              {totalPayment !== 0 && (
+                <React.Fragment>
+                  <div className="list-of-orders-total-payment-subtotal">
+                    Subtotal
+                  </div>
+                  <div className="list-of-orders-total-payment-subtotal-price">
+                    Rp{" "}
+                    {Intl.NumberFormat("en-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    })
+                      .format(totalPayment)
+                      .replace(/[IDR]/gi, "")
+                      .replace(/(\.+\d{2})/, "")
+                      .trimLeft()}
+                  </div>
+                </React.Fragment>
+              )}
             </div>
             <hr />
             <div className="submit-order">
