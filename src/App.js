@@ -10,6 +10,8 @@ function NewOrder() {
   const [tableNum, setTableNum] = useState(null);
   const [phoneNum, setPhoneNum] = useState(null);
 
+  console.log(userName, tableNum, phoneNum)
+
   return (
     <div className="app">
       <div className="app-container">

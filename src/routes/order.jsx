@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Logo from "../img/logo.png";
+import LogoSM from "../img/logo_sm.png";
 
 import "../css/Order.css";
 
@@ -187,9 +188,17 @@ function Order() {
               {listOfOrders.length > 0 &&
                 listOfOrders.map((order, idx) => {
                   return (
-                    <div key={idx} className="list-of-orders-selection">
-                      {order.quantity} &nbsp; {order.title}
-                    </div>
+                    <React.Fragment>
+                      <div key={idx} className="list-of-orders-selection">
+                        {order.quantity} &nbsp; {order.title}
+                      </div>
+                      <hr
+                        style={{
+                          marginTop: ".5em",
+                          border: "1px solid #ccc",
+                        }}
+                      />
+                    </React.Fragment>
                   );
                 })}
             </div>
@@ -222,7 +231,27 @@ function Order() {
             </div>
             <hr />
             <div className="submit-order">
-              <a href="#">Lanjutkan Pesanan</a>
+              <button>Lanjutkan Pesanan</button>
+            </div>
+
+            <div className="order-modal">
+              <div className="order-modal-content">
+                <div className="order-modal-body">
+                  <img className="order-logo" src={LogoSM} alt="Logo" />
+                  <div>
+                    <div className="order-greetings">Arigatōgozaimashita</div>
+                    <div className="order-greetings">
+                      Pesanan Anda sedang disiapkan
+                    </div>
+                  </div>
+                  <div className="order-go-to-cashier">
+                    Silakan lanjutkan proses pembayaran di kasir
+                  </div>
+                  <div className="order-finish-button">
+                    <button>Click untuk lanjutkan pesanan</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
