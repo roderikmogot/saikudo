@@ -36,13 +36,13 @@ function Order() {
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
 
-  if (
-    data[0]["userName"] === "" ||
-    !data[0]["userName"] ||
-    !data[0]["tableNum"] ||
-    data[0]["tableNum"] === ""
-  ) {
-    return (window.location.href = "http://localhost:3000/home");
+  const userName = data[0]["userName"];
+  const tableNum = data[0]["tableNum"];
+  if (userName === "" || tableNum === "") {
+    return (window.location.href = "http://localhost:3000/");
+  }
+  if (userName === null || tableNum === null) {
+    return (window.location.href = "http://localhost:3000/");
   }
 
   const order = { ...data[0] };
@@ -274,7 +274,15 @@ function Order() {
             </div>
             <hr />
             <div className="submit-order">
-              <button onClick={() => setShowOrderModal(true)}>
+              <button
+                onClick={() => {
+                  if (listOfOrders.length < 1) {
+                    return;
+                  } else {
+                    setShowOrderModal(true);
+                  }
+                }}
+              >
                 Lanjutkan Pesanan
               </button>
             </div>

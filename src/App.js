@@ -6,11 +6,9 @@ import Logo from "./img/logo.png";
 import { Link } from "react-router-dom";
 
 function NewOrder() {
-  const [userName, setUserName] = useState(null);
-  const [tableNum, setTableNum] = useState(null);
-  const [phoneNum, setPhoneNum] = useState(null);
-
-  console.log(userName, tableNum, phoneNum)
+  const [userName, setUserName] = useState("");
+  const [phoneNum, setPhoneNum] = useState("");
+  const [tableNum, setTableNum] = useState("");
 
   return (
     <div className="app">
@@ -22,17 +20,14 @@ function NewOrder() {
           Silahkan isi data berikut untuk
           <br /> melakukan pemesanan
         </div>
-        <form>
         <div className="app-table-form">
           <input
-            required
             className="app-table-text"
             type="text"
             placeholder="Nama Pemesan"
             onChange={(e) => setUserName(e.target.value)}
           />
           <input
-            required
             className="app-table-text"
             type="text"
             placeholder="Nomor Meja"
@@ -46,7 +41,7 @@ function NewOrder() {
           />
         </div>
         <div className="app-table-form-submit">
-          <button className="app-submit">
+          <button className="app-submit" type="submit">
             <Link
               to="/order"
               style={{ textDecoration: "none", color: "white" }}
@@ -62,7 +57,6 @@ function NewOrder() {
             </Link>
           </button>
         </div>
-        </form>
       </div>
     </div>
   );
