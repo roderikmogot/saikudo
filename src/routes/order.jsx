@@ -85,6 +85,7 @@ function Order() {
       totalPrice += +price * order.quantity;
       return order;
     });
+    console.log(totalPrice);
     setTotalPayment(totalPrice);
   };
 
@@ -96,7 +97,7 @@ function Order() {
       listOfOrders: listOfOrders,
       total: totalPayment,
       isPaid: false,
-      isComplete: false
+      isComplete: false,
     };
 
     const newOrder = [...orders, orderData];
@@ -112,6 +113,17 @@ function Order() {
       }, 500);
     }
   };
+
+  function commafy(num) {
+    var str = num.toString().split(".");
+    if (str[0].length >= 3) {
+      str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+    }
+    if (str[1] && str[1].length >= 3) {
+      str[1] = str[1].replace(/(\d{3})/g, "$1 ");
+    }
+    return str.join(".");
+  }
 
   return (
     <div>
@@ -246,7 +258,8 @@ function Order() {
                     Subtotal
                   </div>
                   <div className="list-of-orders-total-payment-subtotal-price">
-                    Rp{" "}
+                    Rp {commafy(totalPayment)}
+                    {/* {" "}
                     {Intl.NumberFormat("en-ID", {
                       style: "currency",
                       currency: "IDR",
@@ -254,7 +267,7 @@ function Order() {
                       .format(totalPayment)
                       .replace(/[IDR]/gi, "")
                       .replace(/(\.+\d{2})/, "")
-                      .trimLeft()}
+                      .trimLeft()} */}
                   </div>
                 </React.Fragment>
               )}

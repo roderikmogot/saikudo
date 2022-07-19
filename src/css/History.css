@@ -139,9 +139,10 @@
     gap: .5em;
 }
 
-.complete-order > a{
+.complete-order > button{
     width: 100%;
     text-decoration: none;
+    border: none;
 
     display: inline-flex;
     text-transform: none;

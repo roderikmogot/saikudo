@@ -1,5 +1,7 @@
 import Logo from "../img/logo.png";
 
+import orders from "../backend/orders.json";
+
 const OrderInfo = ({
   id,
   user,
@@ -14,24 +16,39 @@ const OrderInfo = ({
   if (isPaid && isComplete) {
     button = (
       <div class="complete-order">
-        <a href="#">Pesanan berhasil</a>
+        <button style={{ opacity: "0.5" }} disabled>
+          Pesanan berhasil
+        </button>
       </div>
     );
   } else if (isPaid && !isComplete) {
     button = (
       <div class="complete-order">
-        <a href="#">Pesanan selesai</a>
+        <button>Pesanan selesai</button>
       </div>
     );
   } else {
     button = (
       <div class="complete-order">
-        <a className="cancel-order" href="#">
-          Batal
-        </a>
-        <a href="#">Sudah bayar</a>
+        <button className="cancel-order">Batal</button>
+        <button>Sudah bayar</button>
       </div>
     );
+  }
+
+  const paidOrderHandler = (e) => {};
+
+  const completeOrderHandler = (e) => {};
+
+  function commafy(num) {
+    var str = num.toString().split(".");
+    if (str[0].length >= 3) {
+      str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+    }
+    if (str[1] && str[1].length >= 3) {
+      str[1] = str[1].replace(/(\d{3})/g, "$1 ");
+    }
+    return str.join(".");
   }
 
   return (
@@ -62,8 +79,12 @@ const OrderInfo = ({
                       alt="Food"
                     />
                     <div className="unpaid-order-snack-item">
-                      <div className="unpaid-order-snack-name">Shrimp Roll</div>
-                      <div className="unpaid-order-snack-quantity">1 item</div>
+                      <div className="unpaid-order-snack-name">
+                        {order.title}
+                      </div>
+                      <div className="unpaid-order-snack-quantity">
+                        {order.quantity} item
+                      </div>
                     </div>
                   </div>
                   <hr />
@@ -112,15 +133,7 @@ const OrderInfo = ({
       <div className="unpaid-order-total-amount">
         <div className="unpaid-order-total-amount-title">Total Harga:</div>
         <div className="unpaid-order-total-amount-price">
-          Rp{" "}
-          {Intl.NumberFormat("en-ID", {
-            style: "currency",
-            currency: "IDR",
-          })
-            .format(totalPayment)
-            .replace(/[IDR]/gi, "")
-            .replace(/(\.+\d{2})/, "")
-            .trimLeft()}
+          Rp {commafy(totalPayment)}
         </div>
       </div>
 
