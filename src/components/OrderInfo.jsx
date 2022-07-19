@@ -49,61 +49,79 @@ const OrderInfo = ({
       </div>
       {/* Render OrderList -> [] */}
       <div className="unpaid-order-snack">
-        <div className="unpaid-order-snack-title">Snack</div>
+        <div className="unpaid-order-snack-title">Meals</div>
         <div className="unpaid-order-snack-lists">
-          <div className="unpaid-order-snack-items">
-            <img className="unpaid-order-snack-img" src={Logo} alt="Food" />
-            <div className="unpaid-order-snack-item">
-              <div className="unpaid-order-snack-name">Shrimp Roll</div>
-              <div className="unpaid-order-snack-quantity">1 item</div>
-            </div>
-          </div>
-          <hr />
-          <div className="unpaid-order-snack-items">
-            <img className="unpaid-order-snack-img" src={Logo} alt="Food" />
-            <div className="unpaid-order-snack-item">
-              <div className="unpaid-order-snack-name">Shrimp Roll</div>
-              <div className="unpaid-order-snack-quantity">1 item</div>
-            </div>
-          </div>
-          <hr />
-          <div className="unpaid-order-snack-items">
-            <img className="unpaid-order-snack-img" src={Logo} alt="Food" />
-            <div className="unpaid-order-snack-item">
-              <div className="unpaid-order-snack-name">Shrimp Roll</div>
-              <div className="unpaid-order-snack-quantity">1 item</div>
-            </div>
-          </div>
-          <hr />
+          {orderList.map((order, i) => {
+            if (order.type === "makanan") {
+              return (
+                <>
+                  <div className="unpaid-order-snack-items">
+                    <img
+                      className="unpaid-order-snack-img"
+                      src={Logo}
+                      alt="Food"
+                    />
+                    <div className="unpaid-order-snack-item">
+                      <div className="unpaid-order-snack-name">Shrimp Roll</div>
+                      <div className="unpaid-order-snack-quantity">1 item</div>
+                    </div>
+                  </div>
+                  <hr />
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
       {/* <hr /> */}
       {/* Drinks */}
       <div className="unpaid-order-snack">
-        <div className="unpaid-order-snack-title">Drink</div>
+        <div className="unpaid-order-snack-title">Drinks</div>
         <div className="unpaid-order-snack-lists">
-          <div className="unpaid-order-snack-items">
-            <img className="unpaid-order-snack-img" src={Logo} alt="Food" />
-            <div className="unpaid-order-snack-item">
-              <div className="unpaid-order-snack-name">Ice Tea</div>
-              <div className="unpaid-order-snack-quantity">1 item</div>
-            </div>
-          </div>
-          <hr />
-          <div className="unpaid-order-snack-items">
-            <img className="unpaid-order-snack-img" src={Logo} alt="Food" />
-            <div className="unpaid-order-snack-item">
-              <div className="unpaid-order-snack-name">Ice Tea</div>
-              <div className="unpaid-order-snack-quantity">1 item</div>
-            </div>
-          </div>
-          <hr />
+          {orderList.map((order, i) => {
+            if (order.type === "minuman") {
+              return (
+                <>
+                  <div className="unpaid-order-snack-items">
+                    <img
+                      className="unpaid-order-snack-img"
+                      src={Logo}
+                      alt="Food"
+                    />
+                    <div className="unpaid-order-snack-item">
+                      <div className="unpaid-order-snack-name">
+                        {order.title}
+                      </div>
+                      <div className="unpaid-order-snack-quantity">
+                        {order.quantity} item
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                </>
+              );
+            } else {
+              return null;
+            }
+          })}
         </div>
       </div>
 
       <div className="unpaid-order-total-amount">
         <div className="unpaid-order-total-amount-title">Total Harga:</div>
-        <div className="unpaid-order-total-amount-price">Rp {totalPayment}</div>
+        <div className="unpaid-order-total-amount-price">
+          Rp{" "}
+          {Intl.NumberFormat("en-ID", {
+            style: "currency",
+            currency: "IDR",
+          })
+            .format(totalPayment)
+            .replace(/[IDR]/gi, "")
+            .replace(/(\.+\d{2})/, "")
+            .trimLeft()}
+        </div>
       </div>
 
       {button}

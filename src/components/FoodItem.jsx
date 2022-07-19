@@ -1,11 +1,12 @@
 import { FaPlus } from "react-icons/fa";
 import "../css/Order.css";
 
-const FoodItem = ({ image, title, description, price, addItem }) => {
+const FoodItem = ({ image, title, description, price, addItem, type }) => {
   const foodItem = {
     title: title,
     price: price,
     quantity: 1,
+    type: type
   };
   return (
     <div className="food">

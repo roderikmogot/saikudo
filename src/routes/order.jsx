@@ -183,6 +183,7 @@ function Order() {
                           description={food.description}
                           price={food.price}
                           addItem={addMenuHandler}
+                          type={food.type}
                         />
                       );
                     })}
@@ -199,6 +200,7 @@ function Order() {
                         title={food.title}
                         description={food.description}
                         price={food.price}
+                        type={food.type}
                         addItem={addMenuHandler}
                       />
                     );

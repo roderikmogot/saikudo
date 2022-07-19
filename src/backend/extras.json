@@ -1,1 +1,10 @@
-[{"price":"23","title":"44","description":"44","isStocked":"No","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png","packet":"test"}]
+[
+  {
+    "price": "23",
+    "title": "44",
+    "description": "44",
+    "isStocked": "No",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "packet": "test"
+  }
+]
