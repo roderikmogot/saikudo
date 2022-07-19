@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Logo from "../img/logo.png";
 import LogoSM from "../img/logo_sm.png";
@@ -14,6 +15,7 @@ import makanan from "../backend/foods.json";
 import minuman from "../backend/drinks.json";
 import packet from "../backend/packets.json";
 import cemilan from "../backend/extras.json";
+import orders from "../backend/orders.json";
 
 function Order() {
   // Get data from App.js
@@ -22,6 +24,7 @@ function Order() {
 
   const [listOfOrders, setListOfOrders] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
+  const [showOrderModal, setShowOrderModal] = useState(false);
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
@@ -83,6 +86,31 @@ function Order() {
       return order;
     });
     setTotalPayment(totalPrice);
+  };
+
+  const pushOrderToCashierHandler = async (e) => {
+    // lanjutkan ke cashier
+    const orderData = {
+      id: `18810 - ${orders.length + 1}`,
+      ...order,
+      listOfOrders: listOfOrders,
+      total: totalPayment,
+      isPaid: false,
+      isComplete: false
+    };
+
+    const newOrder = [...orders, orderData];
+    try {
+      await axios.post("http://localhost:3030/add_order", {
+        newOrder,
+      });
+    } catch (err) {
+      console.log("Something happened..!");
+
+      setTimeout(() => {
+        return (window.location.href = "http://localhost:3000/home");
+      }, 500);
+    }
   };
 
   return (
@@ -231,28 +259,33 @@ function Order() {
             </div>
             <hr />
             <div className="submit-order">
-              <button>Lanjutkan Pesanan</button>
+              <button onClick={() => setShowOrderModal(true)}>
+                Lanjutkan Pesanan
+              </button>
             </div>
-
-            <div className="order-modal">
-              <div className="order-modal-content">
-                <div className="order-modal-body">
-                  <img className="order-logo" src={LogoSM} alt="Logo" />
-                  <div>
-                    <div className="order-greetings">Arigatōgozaimashita</div>
-                    <div className="order-greetings">
-                      Pesanan Anda sedang disiapkan
+            {showOrderModal === true && (
+              <div className="order-modal">
+                <div className="order-modal-content">
+                  <div className="order-modal-body">
+                    <img className="order-logo" src={LogoSM} alt="Logo" />
+                    <div>
+                      <div className="order-greetings">Arigatōgozaimashita</div>
+                      <div className="order-greetings">
+                        Pesanan Anda sedang disiapkan
+                      </div>
                     </div>
-                  </div>
-                  <div className="order-go-to-cashier">
-                    Silakan lanjutkan proses pembayaran di kasir
-                  </div>
-                  <div className="order-finish-button">
-                    <button>Click untuk lanjutkan pesanan</button>
+                    <div className="order-go-to-cashier">
+                      Silakan lanjutkan proses pembayaran di kasir
+                    </div>
+                    <div className="order-finish-button">
+                      <button onClick={pushOrderToCashierHandler}>
+                        Click untuk lanjutkan pesanan
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

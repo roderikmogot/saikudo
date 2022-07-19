@@ -81,6 +81,20 @@ app.post("/add_cemilan", async (req, res) => {
   console.log(allFood);
 });
 
+app.post("/add_order", async (req, res) => {
+  let newOrder = req.body["newOrder"];
+
+  // write menu to allFood
+  let newOrderJSON = JSON.stringify(newOrder);
+  fs.writeFile("./orders.json", newOrderJSON, "utf8", function (err) {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("The file was saved!");
+  });
+});
+
 // Listen to port
 app.listen(PORT, () => {
   console.log(`Listening at http://localhost:${PORT}`);

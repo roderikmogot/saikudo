@@ -1,1 +1,59 @@
-// userId, nama, meja, nomer telefon, list pesanan
+[
+  {
+    "id": "18810 - 1",
+    "userName": "adi",
+    "phoneNum": "081234",
+    "tableNum": "12",
+    "listOrders": [
+      { "title": "Tom Yam", "type": "makanan", "quantity": 2 },
+      { "title": "Ice Tea", "type": "minuman", "quantity": 1 }
+    ],
+    "total": "34000",
+    "isPaid": false,
+    "isComplete": false
+  },
+  {
+    "id": "18810 - 2",
+    "userName": "22",
+    "tableNum": "23",
+    "phoneNum": "44",
+    "listOfOrders": [
+      { "title": "22", "price": "4", "quantity": 2 },
+      { "title": "123", "price": "12312", "quantity": 3 },
+      { "title": "2123123123", "price": "22", "quantity": 3 }
+    ],
+    "total": "32000",
+    "isPaid": false,
+    "isComplete": false
+  },
+  {
+    "id": "18810 - 3",
+    "userName": "test",
+    "tableNum": "23",
+    "phoneNum": null,
+    "listOfOrders": [
+      { "title": "22", "price": "4", "quantity": 2 },
+      { "title": "123", "price": "12312", "quantity": 2 },
+      { "title": "2123", "price": "12312", "quantity": 2 },
+      { "title": "2123123123", "price": "22", "quantity": 3 }
+    ],
+    "total": "31000",
+    "isPaid": true,
+    "isComplete": false
+  },
+  {
+    "id": "18810 - 4",
+    "userName": "cahaya",
+    "tableNum": "23",
+    "phoneNum": null,
+    "listOfOrders": [
+      { "title": "22", "price": "4", "quantity": 2 },
+      { "title": "123", "price": "12312", "quantity": 2 },
+      { "title": "2123", "price": "12312", "quantity": 2 },
+      { "title": "2123123123", "price": "22", "quantity": 3 }
+    ],
+    "total": "31000",
+    "isPaid": true,
+    "isComplete": true
+  }
+]

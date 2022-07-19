@@ -36,7 +36,7 @@ const OrderInfo = ({
 
   return (
     <div className="unpaid-order">
-      <div className="unpaid-order-id">{id}</div>
+      <div className="unpaid-order-id">#{id}</div>
       <div className="unpaid-order-wrapper">
         <div className="unpaid-order-user">
           <div className="unpaid-order-user-title">Nama Pemesanan</div>
