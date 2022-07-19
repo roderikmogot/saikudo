@@ -318,11 +318,11 @@ hr {
   color: #666;
 }
 
-.order-finish-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.order-finish-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .order-finish-button > button {
@@ -368,6 +368,59 @@ hr {
 
 .order-finish-button > button:hover {
   transform: scale(1.01);
+}
+
+.packet-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.packet-modal-content {
+  width: 50vw;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.packet-modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
+  width: auto;
+}
+
+.packet-modal-heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.packet-title {
+  font-size: 2rem;
+}
+
+.packet-description {
+  font-size: 1rem;
+  color: #666;
+}
+
+.packet-jenis-kuah{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
 }
 
 @media (max-width: 900px) {

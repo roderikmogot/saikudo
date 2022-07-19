@@ -14,6 +14,7 @@ const Modal = ({ show, onClose, foodType }) => {
   const [newMenuDescription, setNewMenuDescription] = useState("");
   const [newMenuPrice, setNewMenuPrice] = useState("");
   const [newMenuPacketType, setNewMenuPacketType] = useState("");
+  const [newBrothType, setNewBrothType] = useState("");
   const [newMenuIsStocked, setNewMenuIsStocked] = useState("Yes");
 
   if (!show) {
@@ -45,7 +46,20 @@ const Modal = ({ show, onClose, foodType }) => {
           description: newMenuDescription,
           isStocked: isStocked,
           imagePath: newMenuImage,
-          packet: newMenuPacketType
+          packet: newMenuPacketType,
+        };
+      }
+
+      if (foodType === "packet") {
+        newMenu = {
+          type: foodType,
+          price: newMenuPrice,
+          title: newMenuName,
+          description: newMenuDescription,
+          isStocked: isStocked,
+          imagePath: newMenuImage,
+          packet: newMenuPacketType,
+          broth: newBrothType.split(",")
         };
       }
 
@@ -101,6 +115,18 @@ const Modal = ({ show, onClose, foodType }) => {
               placeholder={`Masukkan nama ${foodType}`}
               onChange={(e) => setNewMenuName(e.target.value)}
             />
+            {foodType === "packet" && (
+              <>
+                Masukkan jenis kuah:
+                <input
+                  required
+                  className="app-table-text"
+                  type="text"
+                  placeholder={`format: Biasa, Pedas, ...`}
+                  onChange={(e) => setNewBrothType(e.target.value)}
+                />
+              </>
+            )}
             Masukkan deskripsi:
             <input
               required

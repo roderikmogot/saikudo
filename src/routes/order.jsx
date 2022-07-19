@@ -25,6 +25,8 @@ function Order() {
   const [listOfOrders, setListOfOrders] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
   const [showOrderModal, setShowOrderModal] = useState(false);
+  const [showPacketModal, setShowPacketModal] = useState(false);
+  const [packetNameModal, setPacketNameModal] = useState("");
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
@@ -36,7 +38,7 @@ function Order() {
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
 
-  if(!data){
+  if (!data) {
     return (window.location.href = "http://localhost:3000/");
   }
 
@@ -116,6 +118,11 @@ function Order() {
         return (window.location.href = "http://localhost:3000/home");
       }, 500);
     }
+  };
+
+  const packetModalHandler = (e, packetName) => {
+    setPacketNameModal(packetName);
+    setShowPacketModal(true);
   };
 
   function commafy(num) {
@@ -200,6 +207,7 @@ function Order() {
                           price={food.price}
                           addItem={addMenuHandler}
                           type={food.type}
+                          packetHandler={packetModalHandler}
                         />
                       );
                     })}
@@ -218,6 +226,7 @@ function Order() {
                         price={food.price}
                         type={food.type}
                         addItem={addMenuHandler}
+                        packetHandler={packetModalHandler}
                       />
                     );
                   })}
@@ -299,6 +308,25 @@ function Order() {
                       <button onClick={pushOrderToCashierHandler}>
                         Click untuk lanjutkan pesanan
                       </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            {showPacketModal === true && (
+              <div className="packet-modal">
+                <div className="packet-modal-content">
+                  <div className="packet-modal-body">
+                    <div className="packet-modal-heading">
+                      <div className="packet-title">
+                        {packetNameModal.title}
+                      </div>
+                      <div className="packet-description">
+                        {packetNameModal.description}
+                      </div>
+                    </div>
+                    <div className="packet-jenis-kuah">
+                      <div className="packet-jenis-kuah-title">Jenis Kuah</div>
                     </div>
                   </div>
                 </div>

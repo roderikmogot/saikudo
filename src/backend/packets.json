@@ -1,17 +1,1 @@
-[
-  {
-    "type": "packet",
-    "price": "24.000",
-    "description": "3 Tusuk (Biru & Hijau)",
-    "title": "test",
-    "isStocked": true
-  },
-  {
-    "type": "packet",
-    "price": "44",
-    "title": "rode",
-    "description": "123123",
-    "isStocked": true,
-    "imagePath": ""
-  }
-]
+[{"type":"packet","price":"24.000","description":"3 Tusuk (Biru & Hijau)","title":"test","isStocked":true},{"type":"packet","price":"44","title":"rode","description":"123123","isStocked":true,"imagePath":""},{"type":"packet","price":"24.000","title":"af","description":"enak lhoo","isStocked":true,"imagePath":"asdf","packet":"","broth":["Pedas"," Manis"]}]

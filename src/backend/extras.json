@@ -1,9 +1,25 @@
 [
   {
     "price": "23",
-    "title": "44",
+    "title": "random",
     "description": "44",
-    "isStocked": "No",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "packet": "test"
+  },
+  {
+    "price": "12312",
+    "title": "bakso",
+    "description": "44",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "packet": "rode"
+  },
+  {
+    "price": "575",
+    "title": "krupuk",
+    "description": "44",
+    "isStocked": "Yes",
     "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
     "packet": "test"
   }
