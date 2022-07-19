@@ -36,12 +36,16 @@ function Order() {
     (food) => food.isStocked === "Yes" || food.isStocked === true
   );
 
-  const userName = data[0]["userName"];
-  const tableNum = data[0]["tableNum"];
-  if (userName === "" || tableNum === "") {
+  if(!data){
     return (window.location.href = "http://localhost:3000/");
   }
+
+  const userName = data[0]["userName"];
+  const tableNum = data[0]["tableNum"];
   if (userName === null || tableNum === null) {
+    return (window.location.href = "http://localhost:3000/");
+  }
+  if (userName === "" || tableNum === "") {
     return (window.location.href = "http://localhost:3000/");
   }
 
@@ -259,15 +263,6 @@ function Order() {
                   </div>
                   <div className="list-of-orders-total-payment-subtotal-price">
                     Rp {commafy(totalPayment)}
-                    {/* {" "}
-                    {Intl.NumberFormat("en-ID", {
-                      style: "currency",
-                      currency: "IDR",
-                    })
-                      .format(totalPayment)
-                      .replace(/[IDR]/gi, "")
-                      .replace(/(\.+\d{2})/, "")
-                      .trimLeft()} */}
                   </div>
                 </React.Fragment>
               )}

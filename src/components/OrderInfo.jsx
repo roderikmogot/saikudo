@@ -118,7 +118,7 @@ const OrderInfo = ({
         <div className="unpaid-order-snack-title">Meals</div>
         <div className="unpaid-order-snack-lists">
           {orderList.map((order, i) => {
-            if (order.type === "makanan") {
+            if (order.type === "makanan" || order.type === "packet") {
               return (
                 <>
                   <div className="unpaid-order-snack-items">
