@@ -1,6 +1,7 @@
 import Logo from "../img/logo.png";
 
 import orders from "../backend/orders.json";
+import axios from "axios";
 
 const OrderInfo = ({
   id,
@@ -11,6 +12,56 @@ const OrderInfo = ({
   isPaid,
   isComplete,
 }) => {
+  const submitHandler = async (newOrder) => {
+    try {
+      await axios.post("http://localhost:3030/add_order", {
+        newOrder,
+      });
+    } catch (err) {
+      console.log("Something happened..!");
+
+      setTimeout(() => {}, 500);
+    }
+  };
+
+  const paidOrderHandler = async (e) => {
+    for (let i = 0; i < orders.length; i++) {
+      if (orders[i]["id"] === id) {
+        const editOrder = {
+          ...orders[i],
+          isPaid: true,
+        };
+        orders[i] = editOrder;
+        break;
+      }
+    }
+    submitHandler(orders);
+  };
+
+  const completeOrderHandler = async (e) => {
+    for (let i = 0; i < orders.length; i++) {
+      if (orders[i]["id"] === id) {
+        const editOrder = {
+          ...orders[i],
+          isComplete: true,
+        };
+        orders[i] = editOrder;
+        break;
+      }
+    }
+    submitHandler(orders);
+  };
+
+  const cancelOrderHandler = async (e) => {
+    for (let i = 0; i < orders.length; i++) {
+      if (orders[i]["id"] === id) {
+        orders.splice(i, 1);
+        break;
+      }
+    }
+    submitHandler(orders);
+  };
+
   let button = null;
 
   if (isPaid && isComplete) {
@@ -24,21 +75,19 @@ const OrderInfo = ({
   } else if (isPaid && !isComplete) {
     button = (
       <div class="complete-order">
-        <button>Pesanan selesai</button>
+        <button onClick={completeOrderHandler}>Pesanan selesai</button>
       </div>
     );
   } else {
     button = (
       <div class="complete-order">
-        <button className="cancel-order">Batal</button>
-        <button>Sudah bayar</button>
+        <button className="cancel-order" onClick={cancelOrderHandler}>
+          Batal
+        </button>
+        <button onClick={paidOrderHandler}>Sudah bayar</button>
       </div>
     );
   }
-
-  const paidOrderHandler = (e) => {};
-
-  const completeOrderHandler = (e) => {};
 
   function commafy(num) {
     var str = num.toString().split(".");
