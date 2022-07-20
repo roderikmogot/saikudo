@@ -400,11 +400,11 @@ hr {
   width: auto;
 }
 
-.packet-modal-heading{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.packet-modal-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .packet-title {
@@ -416,11 +416,146 @@ hr {
   color: #666;
 }
 
-.packet-jenis-kuah{
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+.packet-jenis-kuah {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+}
+
+.packet-jenis-kuah-title {
+  font-weight: bold;
+}
+
+.packet-jenis-kuah-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 200px));
+  grid-gap: 0.5em;
+  align-items: start;
+}
+
+.packet-jenis-kuah-grid-item {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 200px));
+  gap: 2em;
+}
+
+.labelexpanded {
+  font-size: 1rem;
+}
+
+.labelexpanded > input {
+  display: none;
+}
+
+.labelexpanded input:checked + .radio-btns {
+  background-color: #253c6a;
+  color: #fff;
+}
+
+.radio-btns {
+  border-radius: 10px;
+  padding: 1em;
+  box-shadow: 0 1px #c3c3c3;
+  cursor: pointer;
+  background-color: #eaeaea;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* gap: 2em; */
+}
+
+/* .radio-btns > img {
+  width: 2vw;
+  height: 2vh;
+} */
+
+.packet-cemilan-title {
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.packet-cemilan-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.cemilan {
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.cemilan-id {
+  border-radius: 10px;
+  background-color: white;
+  padding: 5px 20px 20px;
+}
+
+.cemilan-id > .cemilan-title {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.cemilan-id > .cemilan-description {
+  font-size: 0.8rem;
+  color: #666666;
+}
+
+.cemilan-id > .cemilan-price {
+  margin-top: 1vw;
+  font-size: 1rem;
+  color: #666666;
+}
+
+.cemilan-id > .cemilan-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #07469b; */
+}
+
+.cemilan-id > .cemilan-select > button {
+  border: none;
+  /* margin-top: 1vh; */
+  /* width: 100%; */
+  text-decoration: none;
+
+  display: inline-block;
+  text-transform: none;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0;
+
+  outline: 2px solid transparent;
+
+  border-radius: 0.375em;
+
+  /* min-width: 2.5rem; */
+  height: 2.5rem;
+
+  padding-inline-start: 1rem;
+  padding-inline-end: 1rem;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  background-color: #4c9240;
+  color: #fff;
+
+  /* user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle; */
+
+  /* outline-offset: 2px; */
+  /* width: 100%; */
+  line-height: 1.2;
+
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 900px) {

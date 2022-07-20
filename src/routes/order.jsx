@@ -26,7 +26,11 @@ function Order() {
   const [totalPayment, setTotalPayment] = useState(0);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [showPacketModal, setShowPacketModal] = useState(false);
+  const [jenisKuah, setJenisKuah] = useState("");
+  const [listOfCemilan, setListOfCemilan] = useState([]);
   const [packetNameModal, setPacketNameModal] = useState("");
+
+  console.log(jenisKuah);
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
@@ -125,6 +129,64 @@ function Order() {
     setShowPacketModal(true);
   };
 
+  const incCemilanHandler = (item) => {
+    const newItem = {
+      ...item,
+      quantity: 1,
+    };
+
+    let isInList = false;
+    for (let i = 0; i < listOfCemilan.length; i++) {
+      if (listOfCemilan[i]["title"] === item.title) {
+        let updateCemilan = listOfCemilan.map((cemilan) => {
+          if (cemilan.title === item.title) {
+            return { ...cemilan, quantity: cemilan.quantity + 1 };
+          } else {
+            return cemilan;
+          }
+        });
+        isInList = true;
+        setListOfCemilan(updateCemilan);
+        break;
+      }
+    }
+
+    if (!isInList) {
+      setListOfCemilan([...listOfCemilan, newItem]);
+    }
+  };
+
+  const decCemilanHandler = (item) => {
+    const { title } = item;
+    const newListCemilan = [];
+    let isInList = false;
+    for (let i = 0; i < listOfCemilan.length; i++) {
+      if (listOfCemilan[i]["title"] === title) {
+        isInList = true;
+      }
+    }
+
+    if (isInList) {
+      for (let i = 0; i < listOfCemilan.length; i++) {
+        if (listOfCemilan[i].title === item.title) {
+          if (listOfCemilan[i].quantity === 1) {
+            continue;
+          } else {
+            newListCemilan.push({
+              ...listOfCemilan[i],
+              quantity: listOfCemilan[i].quantity - 1,
+            });
+          }
+        } else {
+          newListCemilan.push(listOfCemilan[i]);
+        }
+      }
+      setListOfCemilan(newListCemilan);
+    }
+  };
+
+  console.log(listOfCemilan);
+
   function commafy(num) {
     var str = num.toString().split(".");
     if (str[0].length >= 3) {
@@ -208,6 +270,7 @@ function Order() {
                           addItem={addMenuHandler}
                           type={food.type}
                           packetHandler={packetModalHandler}
+                          broth={food.broth}
                         />
                       );
                     })}
@@ -227,6 +290,7 @@ function Order() {
                         type={food.type}
                         addItem={addMenuHandler}
                         packetHandler={packetModalHandler}
+                        broth={food.broth}
                       />
                     );
                   })}
@@ -327,6 +391,78 @@ function Order() {
                     </div>
                     <div className="packet-jenis-kuah">
                       <div className="packet-jenis-kuah-title">Jenis Kuah</div>
+
+                      <div className="packet-jenis-kuah-grid">
+                        {packetNameModal.broth.length > 0 &&
+                          packetNameModal.broth.map((item, i) => {
+                            return (
+                              <label class="labelexpanded">
+                                <input
+                                  type="radio"
+                                  name="targetgroup"
+                                  onChange={(e) => setJenisKuah(item)}
+                                />
+                                <div class="radio-btns">
+                                  {/* <img src={Logo} alt=""/> */}
+                                  <p>{item}</p>
+                                </div>
+                              </label>
+                            );
+                          })}
+                      </div>
+                      <div className="packet-cemilan-title">
+                        Cemilan Tambahan
+                      </div>
+                      <div className="packet-cemilan-grid">
+                        {cemilan.map((item, i) => {
+                          if (item.packet === packetNameModal.title) {
+                            return (
+                              <>
+                                <div className="cemilan">
+                                  <div className="cemilan-image">
+                                    {/* <img
+                                      className="image"
+                                      src={image}
+                                      width="100%"
+                                      alt="Food"
+                                    /> */}
+                                  </div>
+                                  <div className="cemilan-id">
+                                    <div className="cemilan-title">
+                                      {item.title.charAt(0).toUpperCase() +
+                                        item.title.slice(1)}
+                                    </div>
+                                    <div className="cemilan-price">
+                                      Rp {item.price}
+                                    </div>
+                                    <div className="cemilan-select">
+                                      <button
+                                        onClick={() => decCemilanHandler(item)}
+                                      >
+                                        -
+                                      </button>
+                                      {listOfCemilan.map((cemilan) => {
+                                        if (cemilan.title === item.title) {
+                                          return <>{cemilan.quantity}</>;
+                                        } else {
+                                          return null;
+                                        }
+                                      })}
+                                      <button
+                                        onClick={() => incCemilanHandler(item)}
+                                      >
+                                        +
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>

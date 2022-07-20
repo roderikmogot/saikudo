@@ -58,8 +58,7 @@ const Modal = ({ show, onClose, foodType }) => {
           description: newMenuDescription,
           isStocked: isStocked,
           imagePath: newMenuImage,
-          packet: newMenuPacketType,
-          broth: newBrothType.split(",")
+          broth: newBrothType.split(", ")
         };
       }
 
