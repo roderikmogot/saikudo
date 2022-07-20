@@ -30,8 +30,6 @@ function Order() {
   const [listOfCemilan, setListOfCemilan] = useState([]);
   const [packetNameModal, setPacketNameModal] = useState("");
 
-  console.log(listOfCemilan)
-
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
@@ -95,7 +93,6 @@ function Order() {
       totalPrice += +price * order.quantity;
       return order;
     });
-    console.log(totalPrice);
     setTotalPayment(totalPrice);
   };
 
@@ -185,6 +182,75 @@ function Order() {
     }
   };
 
+  const addPacketHandler = (e) => {
+    // title: '4', price: '12312', quantity: 5, type: 'minuman'
+    if (jenisKuah.length > 0) {
+      if (listOfCemilan.length > 0) {
+        let cemilanOrders = [];
+        for (let i = 0; i < listOfCemilan.length; i++) {
+          const cemilanFormat = {
+            title: listOfCemilan[i].title,
+            price: listOfCemilan[i].price,
+            quantity: listOfCemilan[i].quantity,
+            type: "cemilan",
+          };
+          cemilanOrders = [...cemilanOrders, cemilanFormat];
+        }
+        // double check from listOfOrder for no duplicates
+        const noDupCemilan = [];
+
+        for(let i=0; i < listOfOrders.length; i++){
+          if(listOfOrders[i].type !== "cemilan"){
+            noDupCemilan.push(listOfOrders[i])
+          }
+        }
+
+        for(let i = 0; i < listOfOrders.length; i++){
+          let exist = false
+          for(let j = 0; j < cemilanOrders.length; j++){
+            if(listOfOrders[i].title === cemilanOrders[j].title) exist = true
+          }
+          if(!exist){
+            noDupCemilan.push(listOfOrders[i])
+          }
+        }
+
+        for (let i = 0; i < cemilanOrders.length; i++) {
+          let exist = false
+          for (let j = 0; j < listOfOrders.length; j++) {
+            if (cemilanOrders[i].title === listOfOrders[j].title) {
+              noDupCemilan.push({...listOfOrders[j], quantity: cemilanOrders[i].quantity + listOfOrders[j].quantity})
+              exist = true
+              break
+            }
+          }
+          if(!exist){
+            noDupCemilan.push(cemilanOrders[i])
+          }
+        }
+
+        // console.log(noDupCemilan)
+
+        // store to state
+        setListOfOrders([...noDupCemilan]);
+        updatePriceHandler([...noDupCemilan]);
+      }
+
+      // TODO: Add packet dan jenis kuahnya
+      // console.log(packetNameModal.title, jenisKuah, packetNameModal.quantity);
+
+      setShowPacketModal(false);
+
+      // reset state
+      setListOfCemilan([]);
+      setJenisKuah("");
+    } else {
+      // return or close the modal
+      setShowPacketModal(false);
+      return;
+    }
+  };
+
   function commafy(num) {
     var str = num.toString().split(".");
     if (str[0].length >= 3) {
@@ -195,6 +261,8 @@ function Order() {
     }
     return str.join(".");
   }
+
+  // console.log(listOfOrders)
 
   return (
     <div>
@@ -380,12 +448,17 @@ function Order() {
                 <div className="packet-modal-content">
                   <div className="packet-modal-body">
                     <div className="packet-modal-heading">
-                      <div className="packet-title">
-                        {packetNameModal.title}
+                      <div className="packet-info">
+                        <div className="packet-title">
+                          {packetNameModal.title}
+                        </div>
+                        <div className="packet-description">
+                          {packetNameModal.description}
+                        </div>
                       </div>
-                      <div className="packet-description">
-                        {packetNameModal.description}
-                      </div>
+                      <button onClick={addPacketHandler}>
+                        Masukan dalam Keranjang
+                      </button>
                     </div>
                     <div className="packet-jenis-kuah">
                       <div className="packet-jenis-kuah-title">Jenis Kuah</div>
@@ -440,20 +513,36 @@ function Order() {
                                         -
                                       </button>
                                       {(() => {
-                                        let hasQuantity = false
-                                        for(let i = 0; i < listOfCemilan.length; i++){
-                                          if(listOfCemilan[i].title === item.title){
-                                            hasQuantity = true
+                                        let hasQuantity = false;
+                                        for (
+                                          let i = 0;
+                                          i < listOfCemilan.length;
+                                          i++
+                                        ) {
+                                          if (
+                                            listOfCemilan[i].title ===
+                                            item.title
+                                          ) {
+                                            hasQuantity = true;
                                           }
                                         }
-                                        if(hasQuantity){
-                                          for(let i = 0; i < listOfCemilan.length; i++){
-                                            if(listOfCemilan[i].title === item.title){
-                                              return <>{listOfCemilan[i].quantity}</>
+                                        if (hasQuantity) {
+                                          for (
+                                            let i = 0;
+                                            i < listOfCemilan.length;
+                                            i++
+                                          ) {
+                                            if (
+                                              listOfCemilan[i].title ===
+                                              item.title
+                                            ) {
+                                              return (
+                                                <>{listOfCemilan[i].quantity}</>
+                                              );
                                             }
                                           }
                                         } else {
-                                          return <>0</>
+                                          return <>0</>;
                                         }
                                       })()}
                                       <button
