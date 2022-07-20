@@ -30,7 +30,7 @@ function Order() {
   const [listOfCemilan, setListOfCemilan] = useState([]);
   const [packetNameModal, setPacketNameModal] = useState("");
 
-  console.log(jenisKuah);
+  console.log(listOfCemilan)
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
@@ -184,8 +184,6 @@ function Order() {
       setListOfCemilan(newListCemilan);
     }
   };
-
-  console.log(listOfCemilan);
 
   function commafy(num) {
     var str = num.toString().split(".");
@@ -441,13 +439,23 @@ function Order() {
                                       >
                                         -
                                       </button>
-                                      {listOfCemilan.map((cemilan) => {
-                                        if (cemilan.title === item.title) {
-                                          return <>{cemilan.quantity}</>;
-                                        } else {
-                                          return null;
+                                      {(() => {
+                                        let hasQuantity = false
+                                        for(let i = 0; i < listOfCemilan.length; i++){
+                                          if(listOfCemilan[i].title === item.title){
+                                            hasQuantity = true
+                                          }
                                         }
-                                      })}
+                                        if(hasQuantity){
+                                          for(let i = 0; i < listOfCemilan.length; i++){
+                                            if(listOfCemilan[i].title === item.title){
+                                              return <>{listOfCemilan[i].quantity}</>
+                                            }
+                                          }
+                                        } else {
+                                          return <>0</>
+                                        }
+                                      })()}
                                       <button
                                         onClick={() => incCemilanHandler(item)}
                                       >
