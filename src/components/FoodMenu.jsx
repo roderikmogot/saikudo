@@ -1,4 +1,5 @@
 import "../css/Edit.css";
+import Logo from "../img/logo.png"
 
 import { useState } from "react";
 import EditMenuModal from "./EditMenuModal";
@@ -25,7 +26,28 @@ const FoodMenu = ({
   return (
     <div className="food">
       <div className="food-image">
-        <img className="image" src={image} width="100%" alt="Food" />
+        <img
+          className="image"
+          style={{
+            borderTopLeftRadius: "10px",
+            borderTopRightRadius: "10px",
+            maxHeight: "25vh",
+          }}
+          src={(() => {
+            const titleImage = title
+              .toString()
+              .replaceAll(" ", "_")
+              .toLowerCase();
+            console.log(titleImage);
+            try {
+              const image = require(`../img/${titleImage}.jpeg`);
+              return image;
+            } catch (err) {}
+            return Logo;
+          })()}
+          width="100%"
+          alt="Food"
+        />
       </div>
       <div className="food-id">
         <div className="food-title">{showPacketName}</div>

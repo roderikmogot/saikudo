@@ -98,14 +98,6 @@ const Modal = ({ show, onClose, foodType }) => {
         </div>
         <div className="modal-body">
           <div className="new-menu-form">
-            Masukkan nama gambar:
-            <input
-              required
-              className="app-table-text"
-              type="text"
-              placeholder="Masukkan nama gambar (dengan format)"
-              onChange={(e) => setNewMenuImage(e.target.value)}
-            />
             Masukkan nama {foodType}:
             <input
               required

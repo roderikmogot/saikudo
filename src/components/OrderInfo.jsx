@@ -124,7 +124,17 @@ const OrderInfo = ({
                   <div className="unpaid-order-snack-items">
                     <img
                       className="unpaid-order-snack-img"
-                      src={Logo}
+                      src={(() => {
+                        //get the title, join with _ then lowercase them all
+                        const titleImage = order.title.toString().replaceAll(" ", "_").toLowerCase()
+                        console.log(titleImage)
+                        try{
+                          const image = require(`../img/${titleImage}.jpeg`)
+                          return image
+                        } catch(err){
+                        }
+                        return Logo
+                      })()}
                       alt="Food"
                     />
                     <div className="unpaid-order-snack-item">
@@ -179,8 +189,18 @@ const OrderInfo = ({
                   <div className="unpaid-order-snack-items">
                     <img
                       className="unpaid-order-snack-img"
-                      src={Logo}
-                      alt="Food"
+                      src={(() => {
+                        //get the title, join with _ then lowercase them all
+                        const titleImage = order.title.toString().replaceAll(" ", "_").toLowerCase()
+                        console.log(titleImage)
+                        try{
+                          const image = require(`../img/${titleImage}.jpeg`)
+                          return image
+                        } catch(err){
+                        }
+                        return Logo
+                      })()}
+                      alt="Drinks"
                     />
                     <div className="unpaid-order-snack-item">
                       <div className="unpaid-order-snack-name">

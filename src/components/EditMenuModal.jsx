@@ -101,15 +101,6 @@ const EditMenuModal = ({
         </div>
         <div className="modal-body">
           <div className="new-menu-form">
-            Edit nama gambar:
-            <input
-              required
-              className="app-table-text"
-              type="text"
-              value={editMenuImage}
-              placeholder={`${image}`}
-              onChange={(e) => setEditMenuImage(e.target.value)}
-            />
             Edit nama:
             <input
               required

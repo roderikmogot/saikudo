@@ -1,6 +1,8 @@
 import { FaPlus } from "react-icons/fa";
 import "../css/Order.css";
 
+import Logo from "../img/logo.png";
+
 const FoodItem = ({
   image,
   title,
@@ -9,7 +11,7 @@ const FoodItem = ({
   addItem,
   type,
   packetHandler,
-  broth
+  broth,
 }) => {
   const foodItem = {
     title: title,
@@ -20,7 +22,24 @@ const FoodItem = ({
   return (
     <div className="food">
       <div className="food-image">
-        <img className="image" src={image} width="100%" alt="Food" />
+        <img
+          className="image"
+          style={{ borderTopLeftRadius: "10px", borderTopRightRadius: "10px", maxHeight: "25vh" }}
+          src={(() => {
+            const titleImage = title
+              .toString()
+              .replaceAll(" ", "_")
+              .toLowerCase();
+            console.log(titleImage);
+            try {
+              const image = require(`../img/${titleImage}.jpeg`);
+              return image;
+            } catch (err) {}
+            return Logo;
+          })()}
+          width="100%"
+          alt="Food"
+        />
       </div>
       <div className="food-id">
         <div className="food-title">{title}</div>
@@ -30,7 +49,7 @@ const FoodItem = ({
           <button
             onClick={(e) => {
               if (type === "packet") {
-                packetHandler(e, {title, description, broth, type, price});
+                packetHandler(e, { title, description, broth, type, price });
               } else {
                 addItem(e, foodItem);
               }
