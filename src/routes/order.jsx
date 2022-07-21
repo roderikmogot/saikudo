@@ -499,11 +499,42 @@ function Order() {
                   <div className="packet-modal-body">
                     <div className="packet-modal-heading">
                       <div className="packet-info">
-                        <div className="packet-title">
-                          {packetNameModal.title}
-                        </div>
-                        <div className="packet-description">
-                          {packetNameModal.description}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            gap: ".5em"
+                          }}
+                        >
+                          <img
+                            style={{
+                              borderTopLeftRadius: "10px",
+                              borderTopRightRadius: "10px",
+                              maxHeight: "15vh",
+                            }}
+                            src={(() => {
+                              const titleImage = packetNameModal.title
+                                .toString()
+                                .replaceAll(" ", "_")
+                                .toLowerCase();
+                              console.log(titleImage);
+                              try {
+                                const image = require(`../img/${titleImage}.jpeg`);
+                                return image;
+                              } catch (err) {}
+                              return Logo;
+                            })()}
+                            alt="Paket"
+                          />
+                          <div>
+                            <div className="packet-title">
+                              {packetNameModal.title}
+                            </div>
+                            <div className="packet-description">
+                              {packetNameModal.description}
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <button onClick={(e) => addPacketHandler(e)}>
@@ -634,6 +665,7 @@ function Order() {
                         color: "white",
                         padding: ".5em",
                         borderRadius: "10px",
+                        cursor: "pointer"
                       }}
                       onClick={() => {
                         setListOfCemilan([]);
