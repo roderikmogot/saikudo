@@ -267,6 +267,20 @@ hr {
   transform: scale(1.01);
 }
 
+.order-items{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5em;
+}
+
+.order-item-quantity-title{
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  gap: .5em;
+}
+
 .order-list-payment {
   /* background-color: #4C9240; */
   display: flex;

@@ -1,33 +1,25 @@
 [
   {
     "type": "minuman",
-    "price": "12312",
-    "title": "4",
-    "description": "444",
+    "price": "10.000",
+    "title": "Sweet Ice Tea",
+    "description": "Es teh manis",
     "isStocked": "Yes",
     "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
   },
   {
     "type": "minuman",
-    "price": "12312",
-    "title": "123",
-    "description": "444",
+    "price": "10.000",
+    "title": "Ice Tea",
+    "description": "Es teh tawar",
     "isStocked": "Yes",
     "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
   },
   {
     "type": "minuman",
-    "price": "4",
-    "title": "22",
-    "description": "444",
-    "isStocked": "Yes",
-    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
-  },
-  {
-    "type": "minuman",
-    "price": "22",
-    "title": "2123123123",
-    "description": "444",
+    "price": "5.000",
+    "title": "Air Mineral",
+    "description": "Air Mineral Aqua (600ml) (Sedang/Dingin)",
     "isStocked": "Yes",
     "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png"
   }

@@ -16,13 +16,19 @@ const FoodMenu = ({
   editModal,
   displayModal,
 }) => {
+  let showPacketName = "";
+  if (paket) {
+    showPacketName = `${title} - ${paket}`;
+  } else {
+    showPacketName = title;
+  }
   return (
     <div className="food">
       <div className="food-image">
         <img className="image" src={image} width="100%" alt="Food" />
       </div>
       <div className="food-id">
-        <div className="food-title">{title}</div>
+        <div className="food-title">{showPacketName}</div>
         <div className="food-description">{description}</div>
         <div className="food-end">
           <div className="food-price">Rp {price}</div>

@@ -1,1 +1,139 @@
-[{"id":"18810 - 1","userName":"22","tableNum":"23","phoneNum":null,"listOfOrders":[{"title":"4","price":"12312","quantity":2,"type":"minuman"},{"title":"2123","price":"12312","quantity":2,"type":"makanan"},{"title":"123","price":"12312","quantity":2,"type":"minuman"}],"total":73872,"isPaid":true,"isComplete":true},{"id":"18810 - 2","userName":"roderik","tableNum":"13","phoneNum":"091238124","listOfOrders":[{"title":"123","price":"12312","quantity":1,"type":"minuman"},{"title":"22","price":"4","quantity":1,"type":"minuman"},{"title":"2123123123","price":"22","quantity":1,"type":"minuman"},{"title":"4","price":"12312","quantity":2,"type":"minuman"},{"title":"2123","price":"12312","quantity":2,"type":"makanan"},{"title":"test","price":"24.000","quantity":2,"type":"packet"},{"title":"rode","price":"44","quantity":4,"type":"packet"}],"total":109762,"isPaid":true,"isComplete":true}]
+[
+  {
+    "id": "18810 - 1",
+    "userName": "22",
+    "tableNum": "23",
+    "phoneNum": null,
+    "listOfOrders": [
+      { "title": "4", "price": "12312", "quantity": 2, "type": "minuman" },
+      { "title": "2123", "price": "12312", "quantity": 2, "type": "makanan" },
+      { "title": "123", "price": "12312", "quantity": 2, "type": "minuman" }
+    ],
+    "total": 73872,
+    "isPaid": true,
+    "isComplete": true
+  },
+  {
+    "id": "18810 - 2",
+    "userName": "roderik",
+    "tableNum": "13",
+    "phoneNum": "091238124",
+    "listOfOrders": [
+      { "title": "123", "price": "12312", "quantity": 1, "type": "minuman" },
+      { "title": "22", "price": "4", "quantity": 1, "type": "minuman" },
+      {
+        "title": "2123123123",
+        "price": "22",
+        "quantity": 1,
+        "type": "minuman"
+      },
+      { "title": "4", "price": "12312", "quantity": 2, "type": "minuman" },
+      { "title": "2123", "price": "12312", "quantity": 2, "type": "makanan" },
+      { "title": "test", "price": "24.000", "quantity": 2, "type": "packet" },
+      { "title": "rode", "price": "44", "quantity": 4, "type": "packet" }
+    ],
+    "total": 109762,
+    "isPaid": true,
+    "isComplete": true
+  },
+  {
+    "id": "18810 - 3",
+    "userName": "Roderik",
+    "tableNum": "12",
+    "phoneNum": "0812465812344",
+    "listOfOrders": [
+      {
+        "title": "Mie Goreng Ayam",
+        "price": "30.000",
+        "quantity": 2,
+        "type": "makanan"
+      },
+      {
+        "title": "Ice Tea",
+        "price": "10.000",
+        "quantity": 2,
+        "type": "minuman"
+      },
+      {
+        "title": "Mie Goreng Sapi",
+        "price": "30.000",
+        "quantity": 2,
+        "type": "makanan"
+      },
+      {
+        "title": "Nasi Goreng Ayam",
+        "price": "30.000",
+        "quantity": 3,
+        "type": "makanan"
+      },
+      {
+        "title": "Nasi Goreng Sapi",
+        "price": "30.000",
+        "quantity": 2,
+        "type": "makanan"
+      },
+      {
+        "title": "Sweet Ice Tea",
+        "price": "10.000",
+        "quantity": 2,
+        "type": "minuman"
+      }
+    ],
+    "total": 310000,
+    "isPaid": true,
+    "isComplete": true
+  },
+  {
+    "id": "18810 - 4",
+    "userName": "Rode",
+    "tableNum": "2",
+    "phoneNum": "",
+    "listOfOrders": [
+      {
+        "title": "Mie Goreng Ayam",
+        "price": "30.000",
+        "quantity": 1,
+        "type": "makanan"
+      },
+      {
+        "title": "Mie Goreng Sapi",
+        "price": "30.000",
+        "quantity": 2,
+        "type": "makanan"
+      },
+      {
+        "title": "Nasi Goreng Ayam",
+        "price": "30.000",
+        "quantity": 2,
+        "type": "makanan"
+      },
+      {
+        "title": "Nasi Goreng Sapi",
+        "price": "30.000",
+        "quantity": 1,
+        "type": "makanan"
+      },
+      {
+        "title": "Sweet Ice Tea",
+        "price": "10.000",
+        "quantity": 2,
+        "type": "minuman"
+      },
+      {
+        "title": "Ice Tea",
+        "price": "10.000",
+        "quantity": 2,
+        "type": "minuman"
+      },
+      {
+        "title": "Air Mineral",
+        "price": "5.000",
+        "quantity": 1,
+        "type": "minuman"
+      }
+    ],
+    "total": 225000,
+    "isPaid": true,
+    "isComplete": true
+  }
+]

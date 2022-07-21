@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../img/logo.png";
 import LogoSM from "../img/logo_sm.png";
 
@@ -29,12 +29,17 @@ function Order() {
   const [jenisKuah, setJenisKuah] = useState("");
   const [listOfCemilan, setListOfCemilan] = useState([]);
   const [packetNameModal, setPacketNameModal] = useState("");
+  // const [noDupCemilan, setNoDupCemilan] = useState([]);
 
   const allFoods = [...makanan, ...minuman, ...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
   const [filterItems, setFilterItems] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+
+  // useEffect(() => {
+  //   setListOfOrders(listOfOrders);
+  // }, []);
 
   let availableFoods = showItems.filter(
     (food) => food.isStocked === "Yes" || food.isStocked === true
@@ -185,70 +190,91 @@ function Order() {
   const addPacketHandler = (e) => {
     // title: '4', price: '12312', quantity: 5, type: 'minuman'
     if (jenisKuah.length > 0) {
+      const packetAndKuahTitle = packetNameModal.title + " - " + jenisKuah;
+
+      let newPacket = {
+        title: packetAndKuahTitle,
+        price: packetNameModal.price,
+        quantity: 1,
+        type: "packet",
+      };
+
       if (listOfCemilan.length > 0) {
-        let cemilanOrders = [];
-        for (let i = 0; i < listOfCemilan.length; i++) {
-          const cemilanFormat = {
-            title: listOfCemilan[i].title,
-            price: listOfCemilan[i].price,
-            quantity: listOfCemilan[i].quantity,
-            type: "cemilan",
-          };
-          cemilanOrders = [...cemilanOrders, cemilanFormat];
+        // ada nih cemilannya
+        let totalPriceCemilan = 0;
+        for (let i in listOfCemilan) {
+          let price = listOfCemilan[i].price.split(".").join("");
+          totalPriceCemilan += +price * listOfCemilan[i].quantity;
         }
-        // double check from listOfOrder for no duplicates
-        const noDupCemilan = [];
+        let getPacketPrice = packetNameModal.price;
+        getPacketPrice = getPacketPrice.replace(".", "");
+        getPacketPrice = +getPacketPrice;
+        totalPriceCemilan += getPacketPrice;
 
-        for(let i=0; i < listOfOrders.length; i++){
-          if(listOfOrders[i].type !== "cemilan"){
-            noDupCemilan.push(listOfOrders[i])
-          }
-        }
+        totalPriceCemilan = commafy(totalPriceCemilan.toString());
+        totalPriceCemilan = totalPriceCemilan.replace(",", ".");
 
-        for(let i = 0; i < listOfOrders.length; i++){
-          let exist = false
-          for(let j = 0; j < cemilanOrders.length; j++){
-            if(listOfOrders[i].title === cemilanOrders[j].title) exist = true
-          }
-          if(!exist){
-            noDupCemilan.push(listOfOrders[i])
-          }
-        }
+        console.log(totalPriceCemilan);
 
-        for (let i = 0; i < cemilanOrders.length; i++) {
-          let exist = false
-          for (let j = 0; j < listOfOrders.length; j++) {
-            if (cemilanOrders[i].title === listOfOrders[j].title) {
-              noDupCemilan.push({...listOfOrders[j], quantity: cemilanOrders[i].quantity + listOfOrders[j].quantity})
-              exist = true
-              break
-            }
-          }
-          if(!exist){
-            noDupCemilan.push(cemilanOrders[i])
-          }
-        }
+        newPacket = {
+          title: packetAndKuahTitle,
+          price: totalPriceCemilan,
+          extras: [...listOfCemilan],
+          quantity: 1,
+          type: "packet",
+        };
 
-        // console.log(noDupCemilan)
+        setListOfOrders([...listOfOrders, newPacket]);
+        updatePriceHandler([...listOfOrders, newPacket]);
 
-        // store to state
-        setListOfOrders([...noDupCemilan]);
-        updatePriceHandler([...noDupCemilan]);
+        setListOfCemilan([]);
+        setJenisKuah("");
+
+        setShowPacketModal(false);
+        return;
       }
 
-      // TODO: Add packet dan jenis kuahnya
-      // console.log(packetNameModal.title, jenisKuah, packetNameModal.quantity);
+      for (let j = 0; j < listOfOrders.length; j++) {
+        if (
+          newPacket.title === listOfOrders[j].title &&
+          !listOfOrders[j].extras
+        ) {
+          let updateExisting = listOfOrders.map((order, i) => {
+            if (order.title === newPacket.title && !order.extras) {
+              return { ...order, quantity: order.quantity + 1 };
+            } else {
+              return order;
+            }
+          });
+          setListOfOrders([...updateExisting]);
+          updatePriceHandler([...updateExisting]);
 
-      setShowPacketModal(false);
+          setListOfCemilan([]);
+          setJenisKuah("");
 
-      // reset state
+          setShowPacketModal(false);
+          return;
+        }
+      }
+
+      setListOfOrders([...listOfOrders, newPacket]);
+      updatePriceHandler([...listOfOrders, newPacket]);
+
       setListOfCemilan([]);
       setJenisKuah("");
-    } else {
-      // return or close the modal
-      setShowPacketModal(false);
-      return;
     }
+    setShowPacketModal(false);
+  };
+
+  const deleteMenuHandler = (idx) => {
+    let newListOfOrders = [];
+    for (let i = 0; i < listOfOrders.length; i++) {
+      if (i !== idx) {
+        newListOfOrders = [...newListOfOrders, listOfOrders[i]];
+      }
+    }
+    setListOfOrders([...newListOfOrders]);
+    updatePriceHandler([...newListOfOrders]);
   };
 
   function commafy(num) {
@@ -262,7 +288,7 @@ function Order() {
     return str.join(".");
   }
 
-  // console.log(listOfOrders)
+  // console.log(listOfOrders);
 
   return (
     <div>
@@ -375,7 +401,31 @@ function Order() {
                   return (
                     <React.Fragment>
                       <div key={idx} className="list-of-orders-selection">
-                        {order.quantity} &nbsp; {order.title}
+                        <div className="order-items">
+                          <div className="order-item-quantity-title">
+                            <div>{order.quantity}</div>
+                            <div>{order.title}</div>
+                          </div>
+                          <button
+                            style={{
+                              border: "none",
+                              color: "red",
+                              background: "none",
+                            }}
+                            onClick={() => deleteMenuHandler(idx)}
+                          >
+                            x
+                          </button>
+                        </div>
+
+                        {order.extras &&
+                          order.extras.map((extra, i) => {
+                            return (
+                              <div style={{ marginLeft: "1.1vw" }}>
+                                {extra.quantity} &nbsp; {extra.title}
+                              </div>
+                            );
+                          })}
                       </div>
                       <hr
                         style={{
@@ -456,7 +506,7 @@ function Order() {
                           {packetNameModal.description}
                         </div>
                       </div>
-                      <button onClick={addPacketHandler}>
+                      <button onClick={(e) => addPacketHandler(e)}>
                         Masukan dalam Keranjang
                       </button>
                     </div>

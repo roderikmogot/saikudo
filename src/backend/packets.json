@@ -1,38 +1,29 @@
 [
   {
     "type": "packet",
-    "price": "44",
-    "title": "sup",
-    "description": "123123",
-    "isStocked": true,
-    "imagePath": "",
-    "broth": ["Asem", "Enak"]
-  },
-  {
-    "type": "packet",
-    "price": "44",
-    "title": "rode",
-    "description": "123123",
-    "isStocked": true,
-    "imagePath": "",
-    "broth": ["Pedas", "Manis"]
-  },
-  {
-    "type": "packet",
     "price": "24.000",
-    "title": "af",
-    "description": "enak lhoo",
-    "isStocked": true,
-    "imagePath": "asdf",
-    "broth": ["Pedas", "Manis"]
+    "title": "Matsuyama",
+    "description": "3 Tusuk",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "broth": ["Tomyam", "Kaldu Ayam"]
   },
   {
     "type": "packet",
-    "price": "21.000",
-    "title": "enak",
-    "description": "enak",
+    "price": "25.000",
+    "title": "Hiroshima",
+    "description": "3 Tusuk",
     "isStocked": true,
-    "imagePath": "test",
-    "broth": ["Sedang", "Tomyam", "Yummy", "Mantap", "GG", "GG", "GG", "GG", "GG"]
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "broth": ["Tomyam", "Kaldu Ayam"]
+  },
+  {
+    "type": "packet",
+    "price": "30.000",
+    "title": "Fukuyama",
+    "description": "3 Tusuk",
+    "isStocked": true,
+    "imagePath": "/static/media/logo.96afc7a0657b1dd8e094.png",
+    "broth": ["Tomyam", "Kaldu Ayam"]
   }
 ]

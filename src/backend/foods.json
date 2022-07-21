@@ -1,10 +1,1 @@
-[
-  {
-    "type": "makanan",
-    "price": "12312",
-    "title": "2123",
-    "description": "44",
-    "isStocked": true,
-    "imagePath": "sdaf"
-  }
-]
+[{"type":"makanan","price":"30.000","title":"Mie Goreng Ayam","description":"Mie goreng dengan ayam","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"makanan","price":"30.000","title":"Mie Goreng Sapi","description":"Mie goreng dengan sapi Mie goreng dengan sapi Mie goreng dengan sapi Mie goreng dengan sapi  Mie goreng dengan sapi","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"makanan","price":"30.000","title":"Nasi Goreng Ayam","description":"Nasi goreng ayam","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"makanan","price":"30.000","title":"Nasi Goreng Sapi","description":"Nasi goreng sapi","isStocked":"Yes","imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png"},{"type":"makanan","price":"27.000","title":"Sate","description":"Ini sate","isStocked":true,"imagePath":""},{"type":"makanan","price":"123","title":"test","description":"123","isStocked":true,"imagePath":""}]
