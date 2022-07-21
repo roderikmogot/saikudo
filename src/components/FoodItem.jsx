@@ -30,7 +30,6 @@ const FoodItem = ({
               .toString()
               .replaceAll(" ", "_")
               .toLowerCase();
-            console.log(titleImage);
             try {
               const image = require(`../img/${titleImage}.jpeg`);
               return image;

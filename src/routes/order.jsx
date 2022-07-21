@@ -541,12 +541,27 @@ function Order() {
                               <>
                                 <div className="cemilan">
                                   <div className="cemilan-image">
-                                    {/* <img
+                                    <img
                                       className="image"
-                                      src={image}
+                                      style={{
+                                        borderTopLeftRadius: "10px",
+                                        borderTopRightRadius: "10px",
+                                        maxHeight: "25vh",
+                                      }}
+                                      src={(() => {
+                                        const titleImage = item.title
+                                          .toString()
+                                          .replaceAll(" ", "_")
+                                          .toLowerCase();
+                                        try {
+                                          const image = require(`../img/${titleImage}.jpeg`);
+                                          return image;
+                                        } catch (err) {}
+                                        return Logo;
+                                      })()}
                                       width="100%"
                                       alt="Food"
-                                    /> */}
+                                    />
                                   </div>
                                   <div className="cemilan-id">
                                     <div className="cemilan-title">
@@ -611,6 +626,23 @@ function Order() {
                         })}
                       </div>
                     </div>
+                    <button
+                      style={{
+                        backgroundColor: "red",
+                        width: "100%",
+                        border: "none",
+                        color: "white",
+                        padding: ".5em",
+                        borderRadius: "10px",
+                      }}
+                      onClick={() => {
+                        setListOfCemilan([]);
+                        setJenisKuah("");
+                        setShowPacketModal(false);
+                      }}
+                    >
+                      Batal
+                    </button>
                   </div>
                 </div>
               </div>
