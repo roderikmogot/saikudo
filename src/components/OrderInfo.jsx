@@ -134,6 +134,28 @@ const OrderInfo = ({
                       <div className="unpaid-order-snack-quantity">
                         {order.quantity} item
                       </div>
+                      {order.extras &&
+                        order.extras.map((extra, i) => {
+                          return (
+                            <div>
+                              <div className="unpaid-order-snack-items">
+                                <img
+                                  className="unpaid-order-snack-img"
+                                  src={Logo}
+                                  alt="Food"
+                                />
+                                <div className="unpaid-order-snack-item">
+                                  <div className="unpaid-order-snack-name">
+                                    {extra.title}
+                                  </div>
+                                  <div className="unpaid-order-snack-quantity">
+                                    {extra.quantity} item
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                     </div>
                   </div>
                   <hr />
