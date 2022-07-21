@@ -12,8 +12,10 @@ const FoodMenu = ({
   description,
   price,
   paket,
+  onClose,
+  editModal,
+  displayModal,
 }) => {
-  const [showModal, setShowModal] = useState(false);
   return (
     <div className="food">
       <div className="food-image">
@@ -24,21 +26,24 @@ const FoodMenu = ({
         <div className="food-description">{description}</div>
         <div className="food-end">
           <div className="food-price">Rp {price}</div>
-          <div className="food-edit" onClick={() => setShowModal(true)}>
+          <div
+            className="food-edit"
+            onClick={(e) => {
+              editModal({
+                id,
+                allData,
+                foodType,
+                image,
+                title,
+                description,
+                price,
+                paket,
+              });
+              displayModal(true);
+            }}
+          >
             <a href="#">Edit</a>
           </div>
-          <EditMenuModal
-            onClose={() => setShowModal(false)}
-            show={showModal}
-            id={id}
-            allData={allData}
-            foodType={foodType}
-            image={image}
-            title={title}
-            description={description}
-            price={price}
-            paket={paket}
-          />
         </div>
       </div>
     </div>

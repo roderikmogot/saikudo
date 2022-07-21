@@ -1,37 +1,50 @@
-/* The edit-modal (background) */
-.edit-modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
+.modal{
+  position: fixed;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* edit-modal Content/Box */
-.edit-modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+.modal-content{
+  width: 30vw;
+  background-color: #fff;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.new-menu-form{
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.modal-header, .modal-footer{
+  padding: .8em;
+}
+
+.modal-title{
+  margin: 0;
+}
+
+.modal-body{
+  padding: .8em;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.new-menu-is-available{
+  padding-top: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

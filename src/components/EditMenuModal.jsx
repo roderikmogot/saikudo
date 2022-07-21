@@ -1,6 +1,6 @@
 import "../css/EditModal.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import makanan from "../backend/foods.json";
@@ -27,6 +27,14 @@ const EditMenuModal = ({
   const [editMenuPacketType, setEditMenuPacketType] = useState(paket);
   const [editMenuIsStocked, setEditMenuIsStocked] = useState("Yes");
 
+  useEffect(() => {
+    setEditMenuName(title);
+    setEditMenuImage(image);
+    setEditMenuDescription(description);
+    setEditMenuPacketType(paket);
+    setEditMenuPrice(price);
+  }, [title, image, description, price, paket]);
+
   if (!show) {
     return null;
   }
@@ -44,7 +52,6 @@ const EditMenuModal = ({
     };
 
     if (foodType === "Cemilan" || foodType === "cemilan") {
-      console.log("ini adalah data cemilan");
       newMenu = {
         price: editMenuPrice,
         title: editMenuName,
@@ -57,8 +64,6 @@ const EditMenuModal = ({
 
     allData[id] = newMenu;
     const allMenu = allData;
-    console.log(newMenu, id);
-    console.log(allMenu);
 
     try {
       await axios.post(`http://localhost:3030/add_${foodType.toLowerCase()}`, {
@@ -76,8 +81,6 @@ const EditMenuModal = ({
     allData.splice(id, 1);
     const allMenu = allData;
 
-    console.log(allMenu)
-
     try {
       await axios.post(`http://localhost:3030/add_${foodType.toLowerCase()}`, {
         allMenu,
@@ -91,12 +94,12 @@ const EditMenuModal = ({
   };
 
   return (
-    <div className="edit-edit-modal">
-      <div className="edit-modal-content">
-        <div className="edit-modal-header">
+    <div className="modal">
+      <div className="modal-content">
+        <div className="modal-header">
           <h4>Add new {foodType}</h4>
         </div>
-        <div className="edit-modal-body">
+        <div className="modal-body">
           <div className="new-menu-form">
             Edit nama gambar:
             <input
@@ -165,7 +168,7 @@ const EditMenuModal = ({
             </div>
           )}
         </div>
-        <div className="edit-modal-footer">
+        <div className="modal-footer">
           <button className="button" onClick={onClose}>
             Batal
           </button>
