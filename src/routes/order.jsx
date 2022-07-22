@@ -459,6 +459,7 @@ function Order() {
             <hr />
             <div className="submit-order">
               <button
+                style={{ border: "none" }}
                 onClick={() => {
                   if (listOfOrders.length < 1) {
                     return;
@@ -504,7 +505,7 @@ function Order() {
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            gap: ".5em"
+                            gap: ".5em",
                           }}
                         >
                           <img
@@ -665,7 +666,7 @@ function Order() {
                         color: "white",
                         padding: ".5em",
                         borderRadius: "10px",
-                        cursor: "pointer"
+                        cursor: "pointer",
                       }}
                       onClick={() => {
                         setListOfCemilan([]);

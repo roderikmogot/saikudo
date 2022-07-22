@@ -160,13 +160,49 @@ const EditMenuModal = ({
           )}
         </div>
         <div className="modal-footer">
-          <button className="button" onClick={onClose}>
+          <button
+            style={{
+              backgroundColor: "#666",
+              width:"25%",
+              border: "none",
+              color: "white",
+              padding: ".5em",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            className="button"
+            onClick={onClose}
+          >
             Batal
           </button>
-          <button className="button" onClick={deleteMenuHandler}>
+          <button
+            style={{
+              backgroundColor: "red",
+              width:"25%",
+              border: "none",
+              color: "white",
+              padding: ".5em",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            className="button"
+            onClick={deleteMenuHandler}
+          >
             Delete
           </button>
-          <button className="button" onClick={editMenuHandler}>
+          <button
+            style={{
+              backgroundColor: "#f0ad4e",
+              width:"25%",
+              border: "none",
+              color: "white",
+              padding: ".5em",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            className="button"
+            onClick={editMenuHandler}
+          >
             Edit
           </button>
         </div>

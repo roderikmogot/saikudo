@@ -58,7 +58,7 @@ const Modal = ({ show, onClose, foodType }) => {
           description: newMenuDescription,
           isStocked: isStocked,
           imagePath: newMenuImage,
-          broth: newBrothType.split(", ")
+          broth: newBrothType.split(", "),
         };
       }
 
@@ -166,10 +166,34 @@ const Modal = ({ show, onClose, foodType }) => {
           )}
         </div>
         <div className="modal-footer">
-          <button className="button" onClick={onClose}>
+          <button
+            className="button"
+            onClick={onClose}
+            style={{
+              backgroundColor: "red",
+              width: "100%",
+              border: "none",
+              color: "white",
+              padding: ".5em",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+          >
             Batal
           </button>
-          <button className="button" onClick={addNewMenuHandler}>
+          <button
+            style={{
+              backgroundColor: "red",
+              width: "100%",
+              border: "none",
+              color: "white",
+              padding: ".5em",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
+            className="button"
+            onClick={addNewMenuHandler}
+          >
             Tambah
           </button>
         </div>
