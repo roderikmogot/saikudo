@@ -56,16 +56,16 @@ function Order() {
   );
 
   if (!data) {
-    return (window.location.href = "http://localhost:3000/");
+    return (window.location.href = "http://localhost:3000/home");
   }
 
   const userName = data[0]["userName"];
   const tableNum = data[0]["tableNum"];
   if (userName === null || tableNum === null) {
-    return (window.location.href = "http://localhost:3000/");
+    return (window.location.href = "http://localhost:3000/home");
   }
   if (userName === "" || tableNum === "") {
-    return (window.location.href = "http://localhost:3000/");
+    return (window.location.href = "http://localhost:3000/home");
   }
 
   const order = { ...data[0] };

@@ -5,7 +5,7 @@ import Logo from "../img/logo.png";
 
 function Home() {
   return (
-    <Link to="/" style={{
+    <Link to="/home" style={{
       textDecoration: 'none',
       color: 'inherit'
     }}>
