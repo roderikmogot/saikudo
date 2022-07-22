@@ -103,8 +103,17 @@ function Order() {
 
   const pushOrderToCashierHandler = async (e) => {
     // lanjutkan ke cashier
+    const date = new Date();
+    const getMonth = date.getMonth() + 1;
+    const getDate = date.getDate();
+    const getYear = date.getFullYear();
+    const getHour = date.getHours();
+    const getMinute = String(date.getMinutes()).padStart(2, "0");
+    const todayDate = `${getMonth}/${getDate}/${getYear} ${getHour}:${getMinute}`;
+
     const orderData = {
       id: `18810 - ${orders.length + 1}`,
+      date: todayDate,
       ...order,
       listOfOrders: listOfOrders,
       total: totalPayment,

@@ -11,6 +11,7 @@ const OrderInfo = ({
   totalPayment,
   isPaid,
   isComplete,
+  date,
 }) => {
   const submitHandler = async (newOrder) => {
     try {
@@ -102,7 +103,10 @@ const OrderInfo = ({
 
   return (
     <div className="unpaid-order">
-      <div className="unpaid-order-id">#{id}</div>
+      <div className="unpaid-order-id">
+        <div>#{id}</div> 
+        <div>{date}</div>
+      </div>
       <div className="unpaid-order-wrapper">
         <div className="unpaid-order-user">
           <div className="unpaid-order-user-title">Nama Pemesanan</div>
@@ -126,14 +130,15 @@ const OrderInfo = ({
                       className="unpaid-order-snack-img"
                       src={(() => {
                         //get the title, join with _ then lowercase them all
-                        const titleImage = order.title.toString().replaceAll(" ", "_").toLowerCase()
-                        console.log(titleImage)
-                        try{
-                          const image = require(`../img/${titleImage}.jpeg`)
-                          return image
-                        } catch(err){
-                        }
-                        return Logo
+                        const titleImage = order.title
+                          .toString()
+                          .replaceAll(" ", "_")
+                          .toLowerCase();
+                        try {
+                          const image = require(`../img/${titleImage}.jpeg`);
+                          return image;
+                        } catch (err) {}
+                        return Logo;
                       })()}
                       alt="Food"
                     />
@@ -191,14 +196,15 @@ const OrderInfo = ({
                       className="unpaid-order-snack-img"
                       src={(() => {
                         //get the title, join with _ then lowercase them all
-                        const titleImage = order.title.toString().replaceAll(" ", "_").toLowerCase()
-                        console.log(titleImage)
-                        try{
-                          const image = require(`../img/${titleImage}.jpeg`)
-                          return image
-                        } catch(err){
-                        }
-                        return Logo
+                        const titleImage = order.title
+                          .toString()
+                          .replaceAll(" ", "_")
+                          .toLowerCase();
+                        try {
+                          const image = require(`../img/${titleImage}.jpeg`);
+                          return image;
+                        } catch (err) {}
+                        return Logo;
                       })()}
                       alt="Drinks"
                     />

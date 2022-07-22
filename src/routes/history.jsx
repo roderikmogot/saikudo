@@ -4,9 +4,10 @@ import "../css/History.css";
 import AdminNavBar from "../components/AdminNavBar";
 import OrderInfo from "../components/OrderInfo";
 
-import orders from "../backend/orders.json"
+import orders from "../backend/orders.json";
 
 function History() {
+  orders.sort((a, b) => new Date(b.date) - new Date(a.date));
   return (
     <div className="admin">
       <AdminNavBar />
@@ -23,6 +24,7 @@ function History() {
                 totalPayment={order.total}
                 isPaid={order.isPaid}
                 isComplete={order.isComplete}
+                date={order.date}
               />
             );
           } else {

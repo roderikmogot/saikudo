@@ -23,6 +23,7 @@ function Admin() {
                 totalPayment={order.total}
                 isPaid={order.isPaid}
                 isComplete={order.isComplete}
+                date={order.date}
               />
             );
           } else {
