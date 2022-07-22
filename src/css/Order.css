@@ -5,6 +5,7 @@
   align-items: center;
   gap: 5vw;
   background-color: #60becb;
+  padding: .5em;
 }
 
 .main-order-container {
@@ -122,8 +123,8 @@ hr {
 }
 
 .order-img-logo {
-  height: 100px;
-  max-width: 150px;
+  height: 8vh;
+  width: 10vw;
 }
 
 .search-text {

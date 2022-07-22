@@ -24,13 +24,13 @@
 }
 
 .home-logo{
-    margin-top: -5vh;
+    /* margin-top: -5vh; */
     max-width: 20vw;
     /* background-color: aqua; */
 }
 
 .home-greetings{
-    margin-top: -8vh;
+    /* margin-top: -8vh; */
 }
 
 .home-continue{

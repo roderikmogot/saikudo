@@ -26,7 +26,7 @@ function Edit() {
   const [editModalData, setEditModalData] = useState([]);
 
   const [packetColor, setPacketColor] = useState(false);
-  const [makananColor, setMakananColor] = useState(false);
+  const [makananColor, setMakananColor] = useState(true);
   const [minumanColor, setMinumanColor] = useState(false);
   const [cemilanColor, setCemilanColor] = useState(false);
 
@@ -105,7 +105,7 @@ function Edit() {
               >
                 <Category
                   icon={<FaThLarge size={25}  />}
-                  type="Packet"
+                  type="Paket"
                   color={packetColor}
                 />
               </div>

@@ -19,16 +19,11 @@ import orders from "../backend/orders.json";
 
 function Order() {
   // Get data from App.js
-  const categoryButtonColors = {
-    makanan: "#4c9240",
-    minuman: "",
-    packet: "",
-  };
 
   const location = useLocation();
   const data = location.state;
 
-  const [packetColor, setPacketColor] = useState(false);
+  const [packetColor, setPacketColor] = useState(true);
   const [makananColor, setMakananColor] = useState(false);
   const [minumanColor, setMinumanColor] = useState(false);
 
@@ -340,6 +335,20 @@ function Order() {
               >
                 <div
                   onClick={() => {
+                    setShowItems(packet);
+                    setMakananColor(false);
+                    setMinumanColor(false);
+                    setPacketColor(true);
+                  }}
+                >
+                  <Category
+                    icon={<FaThLarge size={25} />}
+                    type="Paket"
+                    color={packetColor}
+                  />
+                </div>
+                <div
+                  onClick={() => {
                     setShowItems(makanan);
                     setMakananColor(true);
                     setMinumanColor(false);
@@ -364,20 +373,6 @@ function Order() {
                     icon={<FaGlassCheers size={25} />}
                     type="Minuman"
                     color={minumanColor}
-                  />
-                </div>
-                <div
-                  onClick={() => {
-                    setShowItems(packet);
-                    setMakananColor(false);
-                    setMinumanColor(false);
-                    setPacketColor(true);
-                  }}
-                >
-                  <Category
-                    icon={<FaThLarge size={25} />}
-                    type="Packet"
-                    color={packetColor}
                   />
                 </div>
               </div>

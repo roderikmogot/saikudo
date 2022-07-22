@@ -1,5 +1,5 @@
 .admin-navigation-bar{
-    /* padding: 1em; */
+    padding: .5em;
     background-color: #60BECB;
 
     display: flex;
@@ -26,9 +26,8 @@
 }
 
 .admin-navigation-logo{
-    max-height: 75px;
-    width: 75px;
-
+    height: 8vh;
+    width: 10vw;
     padding-left: 1em;
 
     /* background-color: #341232; */
