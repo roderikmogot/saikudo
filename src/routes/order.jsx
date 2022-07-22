@@ -31,7 +31,7 @@ function Order() {
   const [packetNameModal, setPacketNameModal] = useState("");
   // const [noDupCemilan, setNoDupCemilan] = useState([]);
 
-  const allFoods = [...makanan, ...minuman, ...packet];
+  const allFoods = [...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
   const [filterItems, setFilterItems] = useState([]);
