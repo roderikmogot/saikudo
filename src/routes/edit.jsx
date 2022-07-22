@@ -25,6 +25,11 @@ function Edit() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [editModalData, setEditModalData] = useState([]);
 
+  const [packetColor, setPacketColor] = useState(false);
+  const [makananColor, setMakananColor] = useState(false);
+  const [minumanColor, setMinumanColor] = useState(false);
+  const [cemilanColor, setCemilanColor] = useState(false);
+
   const [modalFoodType, setModalFoodType] = useState("makanan");
 
   const allItems = [...allFood];
@@ -36,8 +41,8 @@ function Edit() {
   };
 
   const showModalHandler = (e) => {
-    setShowEditModal(true)
-  }
+    setShowEditModal(true);
+  };
 
   return (
     <div>
@@ -57,33 +62,68 @@ function Edit() {
                 onClick={() => {
                   setShowItems(allFood);
                   setModalFoodType("makanan");
+
+                  setMakananColor(true);
+                  setMinumanColor(false);
+                  setPacketColor(false);
+                  setCemilanColor(false);
                 }}
               >
-                <Category icon={<FaUtensilSpoon size={25} />} type="Makanan" />
+                <Category
+                  icon={<FaUtensilSpoon size={25} color={makananColor} />}
+                  type="Makanan"
+                  color={makananColor}
+                />
               </div>
               <div
                 onClick={() => {
                   setShowItems(allDrinks);
                   setModalFoodType("minuman");
+
+                  setMakananColor(false);
+                  setMinumanColor(true);
+                  setPacketColor(false);
+                  setCemilanColor(false);
                 }}
               >
-                <Category icon={<FaGlassCheers size={25} />} type="Minuman" />
+                <Category
+                  icon={<FaGlassCheers size={25}  />}
+                  type="Minuman"
+                  color={minumanColor}
+                />
               </div>
               <div
                 onClick={() => {
                   setShowItems(allPackets);
                   setModalFoodType("packet");
+
+                  setMakananColor(false);
+                  setMinumanColor(false);
+                  setPacketColor(true);
+                  setCemilanColor(false);
                 }}
               >
-                <Category icon={<FaThLarge size={25} />} type="Packet" />
+                <Category
+                  icon={<FaThLarge size={25}  />}
+                  type="Packet"
+                  color={packetColor}
+                />
               </div>
               <div
                 onClick={() => {
                   setShowItems(allExtras);
                   setModalFoodType("cemilan");
+                  setMakananColor(false);
+                  setMinumanColor(false);
+                  setPacketColor(false);
+                  setCemilanColor(true);
                 }}
               >
-                <Category icon={<FaPlus size={25} />} type="Cemilan" />
+                <Category
+                  icon={<FaPlus size={25} />}
+                  type="Cemilan"
+                  color={cemilanColor}
+                />
               </div>
             </div>
           </div>

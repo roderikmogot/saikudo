@@ -19,8 +19,18 @@ import orders from "../backend/orders.json";
 
 function Order() {
   // Get data from App.js
+  const categoryButtonColors = {
+    makanan: "#4c9240",
+    minuman: "",
+    packet: "",
+  };
+
   const location = useLocation();
   const data = location.state;
+
+  const [packetColor, setPacketColor] = useState(false);
+  const [makananColor, setMakananColor] = useState(false);
+  const [minumanColor, setMinumanColor] = useState(false);
 
   const [listOfOrders, setListOfOrders] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
@@ -331,26 +341,44 @@ function Order() {
                 <div
                   onClick={() => {
                     setShowItems(makanan);
+                    setMakananColor(true);
+                    setMinumanColor(false);
+                    setPacketColor(false);
                   }}
                 >
                   <Category
                     icon={<FaUtensilSpoon size={25} />}
                     type="Makanan"
+                    color={makananColor}
                   />
                 </div>
                 <div
                   onClick={() => {
                     setShowItems(minuman);
+                    setMakananColor(false);
+                    setMinumanColor(true);
+                    setPacketColor(false);
                   }}
                 >
-                  <Category icon={<FaGlassCheers size={25} />} type="Minuman" />
+                  <Category
+                    icon={<FaGlassCheers size={25} />}
+                    type="Minuman"
+                    color={minumanColor}
+                  />
                 </div>
                 <div
                   onClick={() => {
                     setShowItems(packet);
+                    setMakananColor(false);
+                    setMinumanColor(false);
+                    setPacketColor(true);
                   }}
                 >
-                  <Category icon={<FaThLarge size={25} />} type="Packet" />
+                  <Category
+                    icon={<FaThLarge size={25} />}
+                    type="Packet"
+                    color={packetColor}
+                  />
                 </div>
               </div>
             </div>
