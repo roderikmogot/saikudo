@@ -167,24 +167,24 @@ const Modal = ({ show, onClose, foodType }) => {
         </div>
         <div className="modal-footer">
           <button
-            className="button"
-            onClick={onClose}
             style={{
-              backgroundColor: "red",
-              width: "100%",
+              backgroundColor: "#666",
+              width: "25%",
               border: "none",
               color: "white",
               padding: ".5em",
               borderRadius: "10px",
               cursor: "pointer",
             }}
+            className="button"
+            onClick={onClose}
           >
             Batal
           </button>
           <button
             style={{
-              backgroundColor: "red",
-              width: "100%",
+              backgroundColor: "#4c9240",
+              width: "25%",
               border: "none",
               color: "white",
               padding: ".5em",
