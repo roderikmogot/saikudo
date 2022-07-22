@@ -50,7 +50,7 @@ function Edit() {
       <div className="order">
         <div className="order-container">
           <div className="order-list">
-            <div className="order-title">Pilih menu disini</div>
+            <div className="order-title">Pilihan Menu</div>
             <div
               className="order-category"
               style={{
