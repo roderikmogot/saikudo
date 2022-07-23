@@ -19,7 +19,8 @@ const EditMenuModal = ({
   description,
   price,
   paket,
-  tusuk
+  tusuk,
+  broth
 }) => {
   const [editMenuImage, setEditMenuImage] = useState(image);
   const [editMenuName, setEditMenuName] = useState(title);
@@ -27,6 +28,7 @@ const EditMenuModal = ({
   const [editMenuPrice, setEditMenuPrice] = useState(price);
   const [editMenuPacketType, setEditMenuPacketType] = useState(paket);
   const [editMenuTusuks, setEditMenuTusuks] = useState(tusuk);
+  const [editMenuBroth, setEditMenuBroth] = useState(broth);
   const [editMenuIsStocked, setEditMenuIsStocked] = useState("Yes");
 
   useEffect(() => {
@@ -35,8 +37,9 @@ const EditMenuModal = ({
     setEditMenuDescription(description);
     setEditMenuPacketType(paket);
     setEditMenuPrice(price);
-    setEditMenuTusuks(tusuk)
-  }, [title, image, description, price, paket, tusuk]);
+    setEditMenuTusuks(tusuk);
+    setEditMenuBroth(broth)
+  }, [title, image, description, price, paket, tusuk, broth]);
 
   if (!show) {
     return null;
@@ -65,8 +68,9 @@ const EditMenuModal = ({
       };
     }
 
-    if (foodType === "packet" || foodType === "packet" || foodType === "paket" || foodType === "Packet") {
+    if (foodType === "packet") {
       newMenu = {
+        type: 'packet',
         price: editMenuPrice,
         title: editMenuName,
         description: editMenuDescription,
@@ -74,6 +78,7 @@ const EditMenuModal = ({
         isStocked: editMenuIsStocked,
         imagePath: editMenuImage,
         packet: editMenuPacketType,
+        broth: editMenuBroth.split(", ")
       };
     }
 
@@ -156,6 +161,19 @@ const EditMenuModal = ({
                 />
               </>
             )}
+            {foodType === "packet" && (
+              <>
+                Edit kuah:
+                <input
+                  required
+                  className="app-table-text"
+                  type="text"
+                  value={editMenuBroth}
+                  placeholder={`${broth.join(', ')}`}
+                  onChange={(e) => setEditMenuBroth(e.target.value)}
+                />
+              </>
+            )}
           </div>
           <div className="new-menu-is-available">
             Tersedia:
@@ -191,7 +209,7 @@ const EditMenuModal = ({
           <button
             style={{
               backgroundColor: "#666",
-              width:"25%",
+              width: "25%",
               border: "none",
               color: "white",
               padding: ".5em",
@@ -206,7 +224,7 @@ const EditMenuModal = ({
           <button
             style={{
               backgroundColor: "red",
-              width:"25%",
+              width: "25%",
               border: "none",
               color: "white",
               padding: ".5em",
@@ -221,7 +239,7 @@ const EditMenuModal = ({
           <button
             style={{
               backgroundColor: "#f0ad4e",
-              width:"25%",
+              width: "25%",
               border: "none",
               color: "white",
               padding: ".5em",

@@ -1,1 +1,42 @@
-[{"price":"24.000","title":"Matsuyama","description":"3 Tusuk","tusuk":"4","isStocked":"Yes","imagePath":"/static/media/logo.15dd7f2ac14b96996e9b.png"},{"price":"25.000","title":"Hiroshima","description":"3 Tusuk","tusuk":"5","isStocked":"Yes","imagePath":"/static/media/logo.15dd7f2ac14b96996e9b.png"},{"type":"packet","price":"30.000","title":"Fukuyama","description":"3 Tusuk","tusuk":"3","isStocked":true,"imagePath":"/static/media/logo.96afc7a0657b1dd8e094.png","broth":["Tomyam","Kaldu Ayam"]},{"type":"packet","price":"400.000","title":"Nagasaki","description":"50 Tusuk","tusuk":"50","isStocked":true,"imagePath":"","broth":["Tomyam","Pedas"]}]
+[
+  {
+    "type": "packet",
+    "price": "24.000",
+    "title": "Matsuyama",
+    "description": "3 Tusuk",
+    "tusuk": "4",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.15dd7f2ac14b96996e9b.png",
+    "broth": ["Kaldu Ayam", "Tomyam"]
+  },
+  {
+    "type": "packet",
+    "price": "25.000",
+    "title": "Hiroshima",
+    "description": "3 Tusuk",
+    "tusuk": "5",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.15dd7f2ac14b96996e9b.png",
+    "broth": ["Kaldu Ayam", "Tomyam", "Gong"]
+  },
+  {
+    "type": "packet",
+    "price": "30.000",
+    "title": "Fukuyama",
+    "description": "3 Tusuk",
+    "tusuk": "3",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.15dd7f2ac14b96996e9b.png",
+    "broth": ["Kaldu Ayam", "Tomyam"]
+  },
+  {
+    "type": "packet",
+    "price": "400.000",
+    "title": "Nagasaki",
+    "description": "50 Tusuk",
+    "tusuk": "50",
+    "isStocked": "Yes",
+    "imagePath": "/static/media/logo.15dd7f2ac14b96996e9b.png",
+    "broth": ["Kaldu Ayam", "Tomyam"]
+  }
+]

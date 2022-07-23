@@ -14,6 +14,7 @@ const FoodMenu = ({
   price,
   paket,
   tusuk,
+  broth,
   onClose,
   editModal,
   displayModal,
@@ -66,7 +67,8 @@ const FoodMenu = ({
                 description,
                 price,
                 paket,
-                tusuk
+                tusuk,
+                broth
               });
               displayModal(true);
             }}

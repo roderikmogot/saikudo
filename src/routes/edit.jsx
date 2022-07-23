@@ -132,6 +132,7 @@ function Edit() {
 
       <div class="list-of-foods">
         {showItems.map((item, index) => {
+          console.log(item)
           return (
             <FoodMenu
               id={index}
@@ -144,6 +145,7 @@ function Edit() {
               price={item.price}
               paket={item.packet}
               tusuk={item.tusuk}
+              broth={item.broth}
               editModal={editModalHandler}
               displayModal={showModalHandler}
             />
@@ -172,6 +174,7 @@ function Edit() {
         price={editModalData.price}
         paket={editModalData.paket}
         tusuk={editModalData.tusuk}
+        broth={editModalData.broth}
       />
     </div>
   );
