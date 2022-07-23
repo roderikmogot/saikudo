@@ -10,6 +10,7 @@ const FoodItem = ({
   price,
   addItem,
   type,
+  tusuk,
   packetHandler,
   broth,
 }) => {
@@ -48,7 +49,7 @@ const FoodItem = ({
           <button
             onClick={(e) => {
               if (type === "packet") {
-                packetHandler(e, { title, description, broth, type, price });
+                packetHandler(e, { title, description, broth, type, price, tusuk });
               } else {
                 addItem(e, foodItem);
               }

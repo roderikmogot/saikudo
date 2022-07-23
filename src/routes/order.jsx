@@ -29,22 +29,18 @@ function Order() {
 
   const [listOfOrders, setListOfOrders] = useState([]);
   const [totalPayment, setTotalPayment] = useState(0);
+  const [jumlahTusukCemilan, setJumlahTusukCemilan] = useState(0);
   const [showOrderModal, setShowOrderModal] = useState(false);
   const [showPacketModal, setShowPacketModal] = useState(false);
   const [jenisKuah, setJenisKuah] = useState("");
   const [listOfCemilan, setListOfCemilan] = useState([]);
   const [packetNameModal, setPacketNameModal] = useState("");
-  // const [noDupCemilan, setNoDupCemilan] = useState([]);
 
   const allFoods = [...packet];
   const [showItems, setShowItems] = useState(allFoods);
 
   const [filterItems, setFilterItems] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
-  // useEffect(() => {
-  //   setListOfOrders(listOfOrders);
-  // }, []);
 
   let availableFoods = showItems.filter(
     (food) => food.isStocked === "Yes" || food.isStocked === true
@@ -145,7 +141,12 @@ function Order() {
     setShowPacketModal(true);
   };
 
-  const incCemilanHandler = (item) => {
+  const incCemilanHandler = (item, maxTusuk) => {
+    maxTusuk = +maxTusuk;
+    if (jumlahTusukCemilan === maxTusuk) {
+      return;
+    }
+
     const newItem = {
       ...item,
       quantity: 1,
@@ -163,12 +164,14 @@ function Order() {
         });
         isInList = true;
         setListOfCemilan(updateCemilan);
+        setJumlahTusukCemilan(jumlahTusukCemilan + 1);
         break;
       }
     }
 
     if (!isInList) {
       setListOfCemilan([...listOfCemilan, newItem]);
+      setJumlahTusukCemilan(jumlahTusukCemilan + 1);
     }
   };
 
@@ -198,6 +201,7 @@ function Order() {
         }
       }
       setListOfCemilan(newListCemilan);
+      setJumlahTusukCemilan(jumlahTusukCemilan - 1);
     }
   };
 
@@ -228,8 +232,6 @@ function Order() {
         totalPriceCemilan = commafy(totalPriceCemilan.toString());
         totalPriceCemilan = totalPriceCemilan.replace(",", ".");
 
-        console.log(totalPriceCemilan);
-
         newPacket = {
           title: packetAndKuahTitle,
           price: totalPriceCemilan,
@@ -240,6 +242,7 @@ function Order() {
 
         setListOfOrders([...listOfOrders, newPacket]);
         updatePriceHandler([...listOfOrders, newPacket]);
+        setJumlahTusukCemilan(0);
 
         setListOfCemilan([]);
         setJenisKuah("");
@@ -265,6 +268,7 @@ function Order() {
 
           setListOfCemilan([]);
           setJenisKuah("");
+          setJumlahTusukCemilan(0);
 
           setShowPacketModal(false);
           return;
@@ -273,6 +277,7 @@ function Order() {
 
       setListOfOrders([...listOfOrders, newPacket]);
       updatePriceHandler([...listOfOrders, newPacket]);
+      setJumlahTusukCemilan(0);
 
       setListOfCemilan([]);
       setJenisKuah("");
@@ -395,6 +400,7 @@ function Order() {
                           type={food.type}
                           packetHandler={packetModalHandler}
                           broth={food.broth}
+                          tusuk={food.tusuk}
                         />
                       );
                     })}
@@ -415,6 +421,7 @@ function Order() {
                         addItem={addMenuHandler}
                         packetHandler={packetModalHandler}
                         broth={food.broth}
+                        tusuk={food.tusuk}
                       />
                     );
                   })}
@@ -551,7 +558,6 @@ function Order() {
                                 .toString()
                                 .replaceAll(" ", "_")
                                 .toLowerCase();
-                              console.log(titleImage);
                               try {
                                 const image = require(`../img/${titleImage}.jpeg`);
                                 return image;
@@ -595,9 +601,7 @@ function Order() {
                             );
                           })}
                       </div>
-                      <div className="packet-cemilan-title">
-                        Pilihan isian
-                      </div>
+                      <div className="packet-cemilan-title">Pilihan isian</div>
                       <div className="packet-cemilan-grid">
                         {cemilan.map((item, i) => {
                           if (item.packet === packetNameModal.title) {
@@ -637,7 +641,12 @@ function Order() {
                                     </div>
                                     <div className="cemilan-select">
                                       <button
-                                        onClick={() => decCemilanHandler(item)}
+                                        onClick={() =>
+                                          decCemilanHandler(
+                                            item,
+                                            packetNameModal.tusuk
+                                          )
+                                        }
                                       >
                                         -
                                       </button>
@@ -675,7 +684,12 @@ function Order() {
                                         }
                                       })()}
                                       <button
-                                        onClick={() => incCemilanHandler(item)}
+                                        onClick={() =>
+                                          incCemilanHandler(
+                                            item,
+                                            packetNameModal.tusuk
+                                          )
+                                        }
                                       >
                                         +
                                       </button>
@@ -701,6 +715,7 @@ function Order() {
                         cursor: "pointer",
                       }}
                       onClick={() => {
+                        setJumlahTusukCemilan(0);
                         setListOfCemilan([]);
                         setJenisKuah("");
                         setShowPacketModal(false);
