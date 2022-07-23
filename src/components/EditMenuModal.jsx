@@ -97,7 +97,7 @@ const EditMenuModal = ({
     <div className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h4>Add new {foodType}</h4>
+          <h4>Edit</h4>
         </div>
         <div className="modal-body">
           <div className="new-menu-form">
