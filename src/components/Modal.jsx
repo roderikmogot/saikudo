@@ -11,6 +11,7 @@ import axios from "axios";
 const Modal = ({ show, onClose, foodType }) => {
   const [newMenuImage, setNewMenuImage] = useState("");
   const [newMenuName, setNewMenuName] = useState("");
+  const [newMenuTusuks, setNewMenuTusuks] = useState("");
   const [newMenuDescription, setNewMenuDescription] = useState("");
   const [newMenuPrice, setNewMenuPrice] = useState("");
   const [newMenuPacketType, setNewMenuPacketType] = useState("");
@@ -56,6 +57,7 @@ const Modal = ({ show, onClose, foodType }) => {
           price: newMenuPrice,
           title: newMenuName,
           description: newMenuDescription,
+          tusuk: newMenuTusuks,
           isStocked: isStocked,
           imagePath: newMenuImage,
           broth: newBrothType.split(", "),
@@ -134,6 +136,18 @@ const Modal = ({ show, onClose, foodType }) => {
               placeholder="Harga (contoh: 21.000)"
               onChange={(e) => setNewMenuPrice(e.target.value)}
             />
+            {foodType === "packet" && (
+              <>
+                Masukkan jumlah tusuk:
+                <input
+                  required
+                  className="app-table-text"
+                  type="text"
+                  placeholder="Jumlah tusuk (contoh: 1)"
+                  onChange={(e) => setNewMenuTusuks(e.target.value)}
+                />
+              </>
+            )}
           </div>
           <div className="new-menu-is-available">
             Tersedia:

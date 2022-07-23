@@ -143,6 +143,7 @@ function Edit() {
               description={item.description}
               price={item.price}
               paket={item.packet}
+              tusuk={item.tusuk}
               editModal={editModalHandler}
               displayModal={showModalHandler}
             />
@@ -170,6 +171,7 @@ function Edit() {
         description={editModalData.description}
         price={editModalData.price}
         paket={editModalData.paket}
+        tusuk={editModalData.tusuk}
       />
     </div>
   );

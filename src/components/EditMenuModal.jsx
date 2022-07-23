@@ -19,12 +19,14 @@ const EditMenuModal = ({
   description,
   price,
   paket,
+  tusuk
 }) => {
   const [editMenuImage, setEditMenuImage] = useState(image);
   const [editMenuName, setEditMenuName] = useState(title);
   const [editMenuDescription, setEditMenuDescription] = useState(description);
   const [editMenuPrice, setEditMenuPrice] = useState(price);
   const [editMenuPacketType, setEditMenuPacketType] = useState(paket);
+  const [editMenuTusuks, setEditMenuTusuks] = useState(tusuk);
   const [editMenuIsStocked, setEditMenuIsStocked] = useState("Yes");
 
   useEffect(() => {
@@ -33,7 +35,8 @@ const EditMenuModal = ({
     setEditMenuDescription(description);
     setEditMenuPacketType(paket);
     setEditMenuPrice(price);
-  }, [title, image, description, price, paket]);
+    setEditMenuTusuks(tusuk)
+  }, [title, image, description, price, paket, tusuk]);
 
   if (!show) {
     return null;
@@ -56,6 +59,18 @@ const EditMenuModal = ({
         price: editMenuPrice,
         title: editMenuName,
         description: editMenuDescription,
+        isStocked: editMenuIsStocked,
+        imagePath: editMenuImage,
+        packet: editMenuPacketType,
+      };
+    }
+
+    if (foodType === "packet" || foodType === "packet" || foodType === "paket" || foodType === "Packet") {
+      newMenu = {
+        price: editMenuPrice,
+        title: editMenuName,
+        description: editMenuDescription,
+        tusuk: editMenuTusuks,
         isStocked: editMenuIsStocked,
         imagePath: editMenuImage,
         packet: editMenuPacketType,
@@ -128,6 +143,19 @@ const EditMenuModal = ({
               placeholder={`${price}`}
               onChange={(e) => setEditMenuPrice(e.target.value)}
             />
+            {foodType === "packet" && (
+              <>
+                Edit jumlah tusuk:
+                <input
+                  required
+                  className="app-table-text"
+                  type="text"
+                  value={editMenuTusuks}
+                  placeholder={`${tusuk}`}
+                  onChange={(e) => setEditMenuTusuks(e.target.value)}
+                />
+              </>
+            )}
           </div>
           <div className="new-menu-is-available">
             Tersedia:
