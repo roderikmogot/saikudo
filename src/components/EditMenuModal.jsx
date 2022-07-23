@@ -169,7 +169,7 @@ const EditMenuModal = ({
                   className="app-table-text"
                   type="text"
                   value={editMenuBroth}
-                  placeholder={`${broth.join(', ')}`}
+                  placeholder={`format: Biasa, Pedas, ...`}
                   onChange={(e) => setEditMenuBroth(e.target.value)}
                 />
               </>

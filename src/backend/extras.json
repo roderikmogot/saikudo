@@ -1,6 +1,6 @@
 [
   {
-    "price": "8.000",
+    "price": "0",
     "title": "Crab Claw",
     "description": "1 Tusuk",
     "isStocked": "Yes",
@@ -8,7 +8,7 @@
     "packet": "Hiroshima"
   },
   {
-    "price": "8.000",
+    "price": "0",
     "title": "Fish Ball",
     "description": "1 Tusuk",
     "isStocked": "Yes",
@@ -16,7 +16,7 @@
     "packet": "Matsuyama"
   },
   {
-    "price": "10.000",
+    "price": "0",
     "title": "Shrimp Ball",
     "description": "1 Tusuk",
     "isStocked": "Yes",
@@ -24,7 +24,7 @@
     "packet": "Fukuyama"
   },
   {
-    "price": "10.000",
+    "price": "0",
     "title": "Chikuwa",
     "description": "1 Tusuk",
     "isStocked": "Yes",
